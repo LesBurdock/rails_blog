@@ -8,9 +8,21 @@ module.exports = {
     './app/views/**/*.{erb,haml,html,slim}'
   ],
   theme: {
-    extend: {
+    colors:{
+      textRed : 'hsl(356, 100%, 66%)',
+      white: 'white',
+      veryLightRed: 'hsl(355, 100%, 74%)',
+      veryDarkBlue: 'hsl(208, 49%, 24%)',
+      White : 'hsl(0, 0%, 100%)',
+     grayishBlue: 'hsl(240, 2%, 79%)',
+     VeryDarkGrayishBlue: 'hsl(207, 13%, 34%)',
+      VeryDarkBlackBlue:'hsl(240, 10%, 16%)',
+      transparent: 'transparent',
+    },
+    extend: { 
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        'Ubuntu': ['Ubuntu', 'sans'],
+        'overpass': ['Overpass','sans-serif'],
       },
     },
   },
