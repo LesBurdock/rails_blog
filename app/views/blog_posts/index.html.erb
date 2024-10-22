@@ -1,6 +1,8 @@
-<h1>Home</h1>
+<%= render partial: "shared/navbar"=%>
+<h1>Some inspiring Posts about being strong</h1>
 <% @blog_posts.each do |blog_post|%>
 <div>
     <%=link_to blog_post.title, blog_post %>
 </div>
 <%end %>
+<%= render partial: "shared/footer"=%>
