@@ -5,7 +5,7 @@ import "trix"
 import "@rails/actiontext"
 
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('turbo:load', () => {
     const userMenuButton = document.getElementById('user-menu-button');
     const dropdownMenu = document.getElementById('dropdownbutton');
 
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener('turbo:load', function() {
     const mobileMenuButton = document.getElementById("mobile-menu-button");
     const mobileMenu = document.getElementById("mobile-menu");
   
