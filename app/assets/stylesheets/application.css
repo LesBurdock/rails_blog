@@ -71,8 +71,10 @@ object-fit:contain
      }
     }
 
-action-text-attachment {
-   grid-row-start: 1;
-   grid-column-start: 2;
-   grid-column-end:3;
-} 
+.trix-content * {
+   display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    column-gap: 60px;
+}
+
