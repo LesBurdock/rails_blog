@@ -1,15 +1,10 @@
-<h1>Detail</h1>
+<%= render partial: "shared/navbar" %>
 
-    <div class="mt-24">
-      <h2 class="font-Ubuntu m-8 md:-mb-36 text-center text-veryDarkBlue text-2xl md:text-4xl z-10">Stronger for the Future</h2>
-      <div class="pb-12 text-center md:text-left md:ml-32 grid grid-rows-auto grid-cols-1 md:grid-rows-fr md:grid-rows-4 md:grid-cols-2">
-        <div class="p-10  row-start-2 col-start-1 md:col-span-1 md:row-start-2">
+      <div class="pb-12 text-center md:text-left md:ml-32">
+        <div class="p-10  mt-24">
           <h3 class="pb-6 font-Ubuntu text-veryDarkBlue text-2xl">  <%=@blog_post.title=%></h3>
           <p class="font-overpass text-VeryDarkGrayishBlue font-light"> <%=@blog_post.content.body=%></p>
         </div>
-        <div class="mt-8 unset row-start-1 col-start-1 md:col-start-2 md:row-start-1 md:row-span-4 md:relative md:overflow-hidden">
-          <%= image_tag('girl_desktop.png',size:'974x786', class:'circle-image1 hidden md:block') %>
-          <%= image_tag('girl_mobile.png', class:'circle-image1 md:hidden block ') %>
-        </div>
       </div>
-    </div>
+
+<%= render partial: "shared/footer" %>

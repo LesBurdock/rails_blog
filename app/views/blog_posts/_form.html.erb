@@ -6,13 +6,17 @@
     <%end%>
 </div>
 <% end %>
-<div>
+<div class="flex flex-col my-12">
 <%= form.label :title %>
 <%= form.text_field :title %>
+</div>
+<div class="flex flex-col my-12">
+<%= form.label :extract %>
+<%= form.text_field :extract%>
 </div>
 <div>
 <%= form.label :body %>
 <%= form.rich_text_area :content %>
 </div>
-<%= form.button %>
+<div class="m-3 mt-12 bg-veryLightRed hover:bg-textRed text-white hover:text-white font-medium py-1 px-6 rounded-full"><%= form.button %></div>
 <%end%>
