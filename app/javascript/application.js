@@ -1,11 +1,14 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "@hotwired/turbo-rails"
-import "controllers"
+import "controllers"  
+import "trix"
+import "@rails/actiontext"
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const userMenuButton = document.getElementById('user-menu-button');
     const dropdownMenu = document.getElementById('dropdownbutton');
-    console.log(dropdownMenu);
+
   
     userMenuButton.addEventListener('click', () => {
       const isExpanded = userMenuButton.getAttribute('aria-expanded') === 'true' || false;
@@ -21,4 +24,19 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
   
+    if (mobileMenuButton) {
+      mobileMenuButton.addEventListener("click", function() {
+        // Toggle the mobile menu
+        mobileMenu.classList.toggle("hidden");
+        
+        // Optionally, change the button's aria-expanded attribute
+        const isExpanded = mobileMenu.classList.contains("hidden") ? "false" : "true";
+        mobileMenuButton.setAttribute("aria-expanded", isExpanded);
+      });
+    }
+  });
