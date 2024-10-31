@@ -71,11 +71,13 @@ max-width:none;
     object-fit:cover;
     max-width:none;
     }
+    .trix-content * {
+        display: flex;
+        align-items: center;
+  justify-content: center;
+         flex-direction: row;
+         justify-content: space-between;
+         column-gap: 60px;
+     }
  }
 
-  .trix-content * {
-    display: flex;
-     flex-direction: row;
-     justify-content: space-between;
-     column-gap: 60px;
- }
