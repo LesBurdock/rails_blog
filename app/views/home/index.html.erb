@@ -11,29 +11,31 @@
         </div>
       </div>
     </header>
-    <div class="mt-24">
-      <h2 class="font-Ubuntu m-8 md:-mb-36 text-center text-veryDarkBlue text-2xl md:text-4xl z-10">Stronger for the Future</h2>
-      <div class="pb-12 text-center md:text-left md:ml-32 grid grid-rows-auto grid-cols-1 md:grid-rows-fr md:grid-rows-4 md:grid-cols-2">
-        <div class="p-10  row-start-2 col-start-1 md:col-span-1 md:row-start-2">
-          <h3 class="pb-6 font-Ubuntu text-veryDarkBlue text-2xl">Introducing something something</h3>
-          <p class="font-overpass text-VeryDarkGrayishBlue font-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-        <div class="p-10 row-start-3 col-start-1 md:col-span-1 md:row-start-3">
-          <h3 class="pb-6 font-Ubuntu text-veryDarkBlue text-2xl">Introducing something something</h3>
-          <p class="font-overpass text-VeryDarkGrayishBlue font-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-        <div class="mt-8 unset row-start-1 col-start-1 md:col-start-2 md:row-start-1 md:row-span-4 md:relative md:overflow-hidden">
-          <%= image_tag('girl_desktop.png',size:'974x786', class:'circle-image1 hidden md:block') %>
-          <%= image_tag('girl_mobile.png', class:'circle-image1 md:hidden block ') %>
-        </div>
-      </div>
+<div class="mt-24">
+  <h2 class="font-Ubuntu m-8 text-center text-veryDarkBlue text-2xl md:text-4xl z-10">Stronger for the Future</h2>
+  <div class="pb-12 md:pl-24 grid grid-cols-1 md:grid-cols-2 md:gap-4">
+    <div class="flex flex-col justify-center p-10">
+      <h3 class="pb-6 font-Ubuntu text-veryDarkBlue text-2xl">Introducing something something</h3>
+      <p class="pb-6 font-overpass text-VeryDarkGrayishBlue font-light">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      </p>
+      <h3 class="pb-6 font-Ubuntu text-veryDarkBlue text-2xl">Introducing something something</h3>
+      <p class="pb-6 font-overpass text-VeryDarkGrayishBlue font-light">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      </p>
     </div>
-    <div class="relative font-overpass text-white py-12 justify-start content-center mt-32 md:mt-10">
-      <div class="rounded-bl-[10rem] rounded-tr-[10rem] bg-right bg-cover h-[40rem] md:h-[27em]" style="background-image: linear-gradient(to right,hsl(237, 17%, 21%,0.95),hsl(237, 23%, 32%, 0.95)), url(<%= asset_path 'bg-pattern-circles.svg' %>);">
-        <div class="grid grid-rows-2 grid-cols-1 md:grid-cols-2 md:grid-rows-1 absolute bottom-8 md:left-0 md:bottom-12">
-          <div class="text-center p-8 col-start-1 row-start-2 md:col-start-2 md:row-start-1 md:pl-14 md:self-center">
-            <h1 class="mt-0 text-4xl md:mt-12" >Content that reflects reality
-              <h1>
+    <div class="relative overflow-hidden row-start-1 col-start-1 md:row-start-1 md:col-start-2">
+      <%= image_tag('girl_desktop.png', class: 'circle-image1 hidden md:block') %>
+      <%= image_tag('girl_mobile.png', class: 'circle-image1 block md:hidden') %>
+    </div>
+  </div>
+</div>
+<div class="relative font-overpass text-white py-12 justify-start content-center mt-32 md:mt-10">
+  <div class="rounded-bl-[10rem] rounded-tr-[10rem] bg-right bg-cover h-[40rem] md:h-[27em]" style="background-image: linear-gradient(to right,hsl(237, 17%, 21%,0.95),hsl(237, 23%, 32%, 0.95)), url(<%= asset_path 'bg-pattern-circles.svg' %>);">
+    <div class="grid grid-rows-2 grid-cols-1 md:grid-cols-2 md:grid-rows-1 absolute bottom-8 md:left-0 md:bottom-12">
+      <div class="text-center p-8 col-start-1 row-start-2 md:col-start-2 md:row-start-1 md:pl-14 md:self-center">
+        <h1 class="mt-0 text-4xl md:mt-12" >Content that reflects reality
+          <h1>
                 <p class="font-overpass text-grayishBlue pt-12">Lore Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
               </div>
               <div class="col-start-1 row-start-1 md:col-start-1 md:row-start-1 md:pl-24">
@@ -42,16 +44,20 @@
             </div>
           </div>
         </div>
-        <div class="pt-12 md:pt-0 text-center md:text-left md:mr-32 grid grid-rows-auto grid-cols-1 md:grid-rows-fr md:grid-rows-4 md:grid-cols-2">
-          <div class="p-10 row-start-2 col-start-1 md:col-start-2 md:row-start-2">
-            <h3 class="pb-6 font-Ubuntu text-veryDarkBlue text-2xl">Free, Open, Simple</h3>
-            <p class="font-overpass text-VeryDarkGrayishBlue font-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </div>
-          <div class="p-10 row-start-3 col-start-1 md:col-start-2 md:row-start-3">
-            <h3 class="pb-6 font-Ubuntu text-veryDarkBlue text-2xl">Powerful</h3>
-            <p class="font-overpass text-VeryDarkGrayishBlue font-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </div>
-          <div class="unset row-start-1 col-start-1 md:col-start-1 md:row-start-1 md:row-span-4 md:relative md:overflow-hidden"><%= image_tag('desktop_computer_girl.png',size:'974x786',class:'circle-image hidden md:block') %><%= image_tag('computer_girls_mobile.png',size:'974x786',class:'circle-image md:hidden block') %>
-          </div>
-        </div>
+        <div class="pb-12 grid grid-cols-1 md:grid-cols-2 md:gap-4">
+    <div class="flex flex-col justify-center p-10 md:pr-24">
+      <h3 class="pb-6 font-Ubuntu text-veryDarkBlue text-2xl">Free, Open, Simple</h3>
+      <p class="pb-6 font-overpass text-VeryDarkGrayishBlue font-light">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      </p>
+      <h3 class="pb-6 font-Ubuntu text-veryDarkBlue text-2xl">Powerful</h3>
+      <p class="pb-6 font-overpass text-VeryDarkGrayishBlue font-light">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      </p>
+    </div>
+    <div class="relative overflow-hidden row-start-1 col-start-1">
+      <%= image_tag('desktop_computer_girl.png', class: 'circle-image hidden md:block') %>
+      <%= image_tag('computer_girls_mobile.png', class: 'circle-image block md:hidden') %>
+    </div>
+  </div>
         <%= render partial: "shared/footer"=%>
