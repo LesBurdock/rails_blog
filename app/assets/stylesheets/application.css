@@ -53,28 +53,29 @@
  
  @media only screen and (min-width: 768px) {
  .circle-image {
-position: absolute; 
-left: -14%; 
+    position:relative;
+left:-30%; 
 top: 0; 
 width: auto;
 height: 100%;
-object-fit:contain
+object-fit:cover;
+max-width:none;
  }
  
- .circle-image1 {
-    position: absolute; 
+.circle-image1 {
+    position:relative;
     right: -20%; 
     top: 0; 
     width: auto;
     height: 100%;
-    object-fit:contain
-     }
+    object-fit:cover;
+    max-width:none;
     }
+ }
 
-.trix-content * {
-   display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    column-gap: 60px;
-}
-
+  .trix-content * {
+    display: flex;
+     flex-direction: row;
+     justify-content: space-between;
+     column-gap: 60px;
+ }
