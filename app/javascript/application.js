@@ -29,7 +29,8 @@ document.addEventListener('turbo:load', () => {
     const mobileMenuButton = document.getElementById("mobile-menu-button");
     const mobileMenu = document.getElementById("mobile-menu");
   
-    if (mobileMenuButton) {
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenu.classList.add("hidden");
       mobileMenuButton.addEventListener("click", function() {
         // Toggle the mobile menu
         mobileMenu.classList.toggle("hidden");
