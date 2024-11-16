@@ -4,6 +4,10 @@
         <div class="p-10  mt-24">
           <h3 class="pb-6 font-Ubuntu text-veryDarkBlue text-2xl md:text-3xl text-center">  <%=@blog_post.title=%></h3>
           <div class="font-overpass text-VeryDarkGrayishBlue font-light"> <%=@blog_post.content.body=%></div>
+          <% if @blog_post.user == current_user %>
+  <%= link_to 'Edit', edit_blog_post_path(@blog_post) %> |
+  <%= link_to 'Delete', @blog_postpost, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
         </div>
       </div>
 
