@@ -17,6 +17,9 @@
 <div>
 <%= form.label :body %>
 <%= form.rich_text_area :content %>
+<%= form.label :photo %>
+<%= form.file_field :photo, direct_upload: true %>  <!-- ActiveStorage File Field -->
 </div>
-<div class="m-3 mt-12 bg-veryLightRed hover:bg-textRed text-white hover:text-white font-medium py-1 px-6 rounded-full"><%= form.button %></div>
+<div class="m-3 mt-12 bg-veryLightRed hover:bg-textRed text-white hover:text-white font-medium py-1 px-6 rounded-full">
+<%= form.button %></div>
 <%end%>
