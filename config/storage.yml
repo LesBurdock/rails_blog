@@ -8,10 +8,11 @@ local:
 
 cloudinary:
   service: Cloudinary
-  cloudinary_url: cloudinary://254472293226773:sbAD9YBpOv2akpF_F5RtYmI9zEw@dkefcoe8x
-  cloud_name: dkefcoe8x
-  api_key: 254472293226773
-  api_secret: sbAD9YBpOv2akpF_F5RtYmI9zEw
+  cloud_name: <%= ENV["CLOUDINARY_CLOUD_NAME"] %>
+  api_key: <%= ENV["CLOUDINARY_API_KEY"] %>
+  api_secret: <%= ENV["CLOUDINARY_API_SECRET"] %>
+    url: <%= ENV['CLOUDINARY_URL'] %>
+  secure: true
   folder: <%= Rails.env %>
 
 amazon:
