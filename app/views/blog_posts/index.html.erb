@@ -9,9 +9,7 @@
         <h2 class="pb-6 font-Ubuntu text-white text-2xl">
           <%= link_to blog_post.title, blog_post %>
         </h2>
-        <p class="font-overpass text-white font-light">
-          <%= blog_post.extract%>
-        </p>
+        <%= image_tag blog_post.photo, alt: "Blog Post Image" if blog_post.photo.attached? %>
       </div>
     </div>
   <% end %>
