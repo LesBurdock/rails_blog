@@ -1,4 +1,4 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+//const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   content: [
@@ -7,20 +7,22 @@ module.exports = {
     './app/javascript/**/*.js',
     './app/views/**/*.{erb,haml,html,slim}'
   ],
+  safelist: [
+    'md:col-span-2', // <-- add this
+  ],
   theme: {
+    extend:{
     colors:{
-      textRed : 'hsl(356, 100%, 66%)',
-      white: 'white',
-      veryLightRed: 'hsl(355, 100%, 74%)',
-      veryDarkBlue: 'hsl(208, 49%, 24%)',
-      White : 'hsl(0, 0%, 100%)',
-     grayishBlue: 'hsl(240, 2%, 79%)',
-     VeryDarkGrayishBlue: 'hsl(207, 13%, 34%)',
-     Verydarkdesaturatedblue: 'hsl(237, 23%, 32%)', 
-      VeryDarkBlackBlue:'hsl(240, 10%, 16%)',
-      transparent: 'transparent',
+      textRed:'hsl(356, 100%, 66%)',
+      veryLightRed:'hsl(355, 100%, 74%)',
+      veryDarkBlue:'hsl(208, 49%, 24%)',
+      white:'hsl(0, 0%, 100%)',
+     grayishBlue:'hsl(240, 2%, 79%)',
+     veryDarkGrayishBlue:'hsl(207, 13%, 34%)',
+     verydarkdesaturatedblue:'hsl(237, 23%, 32%)', 
+      veryDarkBlackBlue:'hsl(240, 10%, 16%)',
+      transparent:'transparent',
     },
-    extend: { 
       fontFamily: {
         'Ubuntu': ['Ubuntu', 'sans'],
         'overpass': ['Overpass','sans-serif'],
@@ -28,6 +30,8 @@ module.exports = {
     },
   },
   plugins: [
+    require('tailwindcss'),
+    require('autoprefixer'),
     require('@tailwindcss/forms'),
     require('@tailwindcss/typography'),
     require('@tailwindcss/container-queries'),

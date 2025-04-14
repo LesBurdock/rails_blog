@@ -11,7 +11,7 @@ cloudinary:
   cloud_name: <%= ENV["CLOUDINARY_CLOUD_NAME"] %>
   api_key: <%= ENV["CLOUDINARY_API_KEY"] %>
   api_secret: <%= ENV["CLOUDINARY_API_SECRET"] %>
-    url: <%= ENV['CLOUDINARY_URL'] %>
+  url: <%= ENV['CLOUDINARY_URL'] %>
   secure: true
   folder: <%= Rails.env %>
 
