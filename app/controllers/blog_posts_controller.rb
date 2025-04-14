@@ -1,5 +1,6 @@
 
 class BlogPostsController < ApplicationController
+    before_action :set_blog_post, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_user!, except: [:index, :show]
     before_action :authorize_user!, only: [:edit, :update, :destroy] 
     
@@ -45,6 +46,10 @@ class BlogPostsController < ApplicationController
     end
 
     private
+    def set_blog_post
+        @blog_post = BlogPost.find(params[:id])
+      end 
+      
     def blog_post_params
         params.require(:blog_post).permit(:title, :content, :extract, :photo)
     end
