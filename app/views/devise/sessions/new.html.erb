@@ -2,7 +2,7 @@
 <div class="grid grid-cols-1 grid-rows-2 md:grid-rows-1  md:grid-cols-2 md:h-screen place-content-center text-veryDarkBlue">
   <div class="m-12 md:m-24 py-12 md:col-start-1 md:row-start-1 row-start-2">
     <h2 class="font-Ubuntu text-veryDarkBlue text-2xl">Welcome Back</h2>
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
       <div class="py-8">
       <div class="field">
         <%= f.label :email %><br />
