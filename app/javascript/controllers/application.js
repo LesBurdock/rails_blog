@@ -1,9 +1,11 @@
+
+// Import Rails UJS to handle method: :delete, data-remote, etc.
+
+//Stimulus setup (your original code)
 import { Application } from "@hotwired/stimulus"
 
 const application = Application.start()
-
-// Configure Stimulus development experience
 application.debug = false
-window.Stimulus   = application
+window.Stimulus = application
 
 export { application }
