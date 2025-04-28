@@ -75,7 +75,7 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
-
+gem 'standard'
 gem "tailwindcss-rails", "~> 2.7"
 gem 'htmlbeautifier'
 gem "aws-sdk-s3", require: false
