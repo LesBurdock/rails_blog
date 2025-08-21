@@ -21,16 +21,21 @@ Things you may want to cover:
   rails db:migrate
   
 
-* Database initialization
+This uses yarn as a package manager. 
+This uses importmaps as recommended for rails 7 and ruby 3. 
 
-* How to run the test suite
-* tehre are no test suites. 
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
+
+
+
+
+
+
+
+
+
 # Front-end Style Guide
 
 ## Layout
