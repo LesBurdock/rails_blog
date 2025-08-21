@@ -76,6 +76,9 @@ end
 
 gem "devise", "~> 4.9"
 
-gem "tailwindcss-rails", "~> 2.7"
 gem 'htmlbeautifier'
 gem "aws-sdk-s3", require: false
+
+gem "tailwindcss-ruby", "~> 4.1"
+
+gem "tailwindcss-rails", "~> 4.3"
