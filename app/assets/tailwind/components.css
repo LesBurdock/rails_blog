@@ -1,0 +1,24 @@
+
+
+/* buttons for CTA: */
+@layer components {
+/* Base button */
+.btn {
+  @apply m-3 py-1 px-6 rounded-full font-medium transition-colors;
+}
+
+/* Primary button: solid background, hover effect */
+.btn-primary {
+  @apply bg-white text-textRed hover:bg-red hover:text-white;
+}
+
+/* Secondary / Outline button: transparent with border */
+.btn-secondary {
+  @apply bg-transparent text-white border border-white hover:bg-white hover:text-textRed font-bold;
+}
+
+/* Link-style button: minimal, for login or text links */
+.btn-link {
+  @apply text-white hover:text-textRed underline;
+}
+}

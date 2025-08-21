@@ -1,13 +1,18 @@
  <%= render partial: "shared/navbar"  =%>
-<header class="relative font-overpass relative text-white text-center">
+<header class="relative font-overpass text-white text-center">
   <div class="rounded-bl-[5rem] md:rounded-bl-[13rem] bg-center h-[40rem] md:h-[40rem] block"
       style="background-image:linear-gradient(to right, hsl(13, 100%, 72%,91%), hsl(353, 100%, 62%,91%)),url(<%= asset_path 'bg-pattern-intro-mobile.svg' %>);">
     <div class="absolute inset-x-2 bottom-40">
       <h1 class="text-4xl md:text-6xl p-6 mt-12">A modern girls strength training journey
         </h1>
           <p class="pb-3 font-light">Share and Inspire through your fitness journey</p>
-          <button class="m-3 mt-12 bg-white hover:bg-veryLightRed text-textRed hover:bg-red text-white font-medium py-1 px-6 rounded-full"><%= link_to "Get inspired", blog_posts_all_path %></button>
-          <button class="m-3 mt-12 bg-transparent hover:bg-white text-white hover:text-textRed font-bold py-1 px-6 rounded-full outline outline-1"><%= link_to "start sharing", new_blog_post_path %></button>
+      <%= button_to blog_posts_all_path, method: :get, class: "btn btn-primary" do %>
+    Get Inspired
+  <% end %>
+
+  <%= button_to new_blog_post_path, method: :get, class: "btn btn-secondary" do %>
+    Start Sharing
+  <% end %>   
         </div>
       </div>
     </header>

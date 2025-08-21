@@ -19,13 +19,24 @@ module.exports = {
       white:'hsl(0, 0%, 100%)',
      grayishBlue:'hsl(240, 2%, 79%)',
      veryDarkGrayishBlue:'hsl(207, 13%, 34%)',
+     veryDarkGrayBlue:'hsl(237, 17%, 21%)',
      verydarkdesaturatedblue:'hsl(237, 23%, 32%)', 
       veryDarkBlackBlue:'hsl(240, 10%, 16%)',
       transparent:'transparent',
     },
-      fontFamily: {
-        'Ubuntu': ['Ubuntu', 'sans'],
-        'overpass': ['Overpass','sans-serif'],
+           fontFamily: {
+        overpass: ['Overpass', 'sans-serif'],
+        ubuntu: ['Ubuntu', 'sans-serif'],
+      },
+      fontWeight: {
+        light: 300,   // Overpass Light
+        normal: 400,  // Ubuntu Regular
+        medium: 500,  // Ubuntu Medium
+        semibold: 600, // Overpass SemiBold
+        bold: 700,    // Ubuntu Bold
+      },
+      fontSize: {
+        base: ['16px', { lineHeight: '1.5' }], // default body size
       },
     },
   },
