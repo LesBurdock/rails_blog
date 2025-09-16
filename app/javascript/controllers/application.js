@@ -1,5 +1,4 @@
 
-// Import Rails UJS to handle method: :delete, data-remote, etc.
 
 //Stimulus setup (your original code)
 import { Application } from "@hotwired/stimulus"
