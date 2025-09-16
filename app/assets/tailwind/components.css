@@ -16,13 +16,10 @@
     color: var(--color-grayishBlue50);
     border: 0.1rem solid var(--color-grayishBlue50);
   }
-
-  @media (hover: hover) {
     .btn-primary:hover {
-         background-color: var(--color-white);
+      background-color: var(--color-white);
       color: var(--color-textRed);
     }
-  }
 
   /* Secondary / Outline button */
   .btn-secondary {
