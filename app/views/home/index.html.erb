@@ -1,13 +1,18 @@
  <%= render partial: "shared/navbar"  =%>
-<header class="relative font-overpass relative text-white text-center">
+<header class="relative text-center">
   <div class="rounded-bl-[5rem] md:rounded-bl-[13rem] bg-center h-[40rem] md:h-[40rem] block"
       style="background-image:linear-gradient(to right, hsl(13, 100%, 72%,91%), hsl(353, 100%, 62%,91%)),url(<%= asset_path 'bg-pattern-intro-mobile.svg' %>);">
     <div class="absolute inset-x-2 bottom-40">
-      <h1 class="text-4xl md:text-6xl p-6 mt-12">A modern girls strength training journey
+      <h1 class=" text-white text-4xl md:text-6xl p-6 mt-12">A modern girls strength training journey
         </h1>
-          <p class="pb-3 font-light">Share and Inspire through your fitness journey</p>
-          <button class="m-3 mt-12 bg-white hover:bg-veryLightRed text-textRed hover:bg-red text-white font-medium py-1 px-6 rounded-full"><%= link_to "Get inspired", blog_posts_all_path %></button>
-          <button class="m-3 mt-12 bg-transparent hover:bg-white text-white hover:text-textRed font-bold py-1 px-6 rounded-full outline outline-1"><%= link_to "start sharing", new_blog_post_path %></button>
+          <p class="pb-3 font-light text-grayishBlue50">Share and Inspire through your fitness journey</p>
+      <%= button_to blog_posts_all_path, method: :get, class: "btn btn-primary" do %>
+    Get Inspired
+  <% end %>
+
+  <%= button_to new_blog_post_path, method: :get, class: "btn btn-primary" do %>
+    Start Sharing
+  <% end %>   
         </div>
       </div>
     </header>
@@ -16,11 +21,11 @@
   <div class="pb-12 md:pl-24 grid grid-cols-1 md:grid-cols-2 md:gap-4">
     <div class="flex flex-col justify-center p-10">
       <h3 class="pb-6 font-Ubuntu text-veryDarkBlue text-2xl">Introducing something something</h3>
-      <p class="pb-6 font-overpass text-veryDarkGrayishBlue font-light">
+      <p class="pb-6 font-light">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
       </p>
       <h3 class="pb-6 font-Ubuntu text-veryDarkBlue text-2xl">Introducing something something</h3>
-      <p class="pb-6 font-overpass text-veryDarkGrayishBlue font-light">
+      <p class="pb-6 font-light">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
       </p>
     </div>
@@ -30,13 +35,13 @@
     </div>
   </div>
 </div>
-<div class="relative font-overpass text-white py-12 justify-start content-center mt-32 md:mt-10">
+<div class="relative text-white py-12 justify-start content-center mt-32 md:mt-10">
   <div class="rounded-bl-[10rem] rounded-tr-[10rem] bg-right bg-cover h-[40rem] md:h-[27em]" style="background-image: linear-gradient(to right,hsl(237, 17%, 21%,0.95),hsl(237, 23%, 32%, 0.95)), url(<%= asset_path 'bg-pattern-circles.svg' %>);">
     <div class="grid grid-rows-2 grid-cols-1 md:grid-cols-2 md:grid-rows-1 absolute bottom-8 md:left-0 md:bottom-12">
       <div class="text-center p-8 col-start-1 row-start-2 md:col-start-2 md:row-start-1 md:pl-14 md:self-center">
         <h1 class="mt-0 text-4xl md:mt-12" >Content that reflects reality
           <h1>
-                <p class="font-overpass text-grayishBlue pt-12">Lore Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                <p class="text-grayishBlue pt-12">Lore Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
               </div>
               <div class="col-start-1 row-start-1 md:col-start-1 md:row-start-1 md:pl-24">
                 <%= image_tag("illustration-phones.svg") %>
@@ -47,11 +52,11 @@
         <div class="pb-12 grid grid-cols-1 md:grid-cols-2 md:gap-4">
     <div class="flex flex-col justify-center p-10 md:pr-24">
       <h3 class="pb-6 font-Ubuntu text-veryDarkBlue text-2xl">Free, Open, Simple</h3>
-      <p class="pb-6 font-overpass text-veryDarkGrayishBlue font-light">
+      <p class="pb-6 font-light">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
       </p>
       <h3 class="pb-6 font-Ubuntu text-veryDarkBlue text-2xl">Powerful</h3>
-      <p class="pb-6 font-overpass text-veryDarkGrayishBlue font-light">
+      <p class="pb-6 font-light">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
       </p>
     </div>

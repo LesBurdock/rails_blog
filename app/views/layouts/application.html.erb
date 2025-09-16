@@ -5,18 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "actiontext", data: { turbo_track: "reload" } %>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "application", data: { turbo_track: "reload" } %>
-    <%= javascript_importmap_tags %>
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Overpass:wght@100..900&display=swap');
-      @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
-    </style>
+  <!-- Tailwind compiled CSS -->
+
+<%= javascript_importmap_tags %>
+<%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+  <%# <%= stylesheet_link_tag "actiontext", "data-turbo-track": "reload" %>
+
+<link href="https://fonts.googleapis.com/css2?family=Overpass:wght@100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
-<body class='font-Ubuntu text-base text-veryDarkBlue leading-loose'>
+<body class='font-body text-base text-veryDarkGrayishBlue leading-loose'>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>

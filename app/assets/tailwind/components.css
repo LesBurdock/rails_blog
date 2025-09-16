@@ -1,0 +1,46 @@
+
+/* buttons for CTA */
+@layer components {
+  /* Base button */
+  .btn {
+    margin: 0.75rem;           /* m-3 */
+    padding-block: 0.5rem;     /* py-2 */
+    padding-inline: 1.25rem;   /* px-5 */
+    border-radius: 9999px;     /* rounded-full */
+    font-weight: 600;          /* font-semibold */
+  }
+
+  /* Primary button */
+  .btn-primary {
+    background-color:var(--color-transparent);
+    color: var(--color-grayishBlue50);
+    border: 0.1rem solid var(--color-grayishBlue50);
+  }
+
+  @media (hover: hover) {
+    .btn-primary:hover {
+         background-color: var(--color-white);
+      color: var(--color-textRed);
+    }
+  }
+
+  /* Secondary / Outline button */
+  .btn-secondary {
+    background-color: transparent;
+    color: var(--color-white);
+    border: 1px solid var(--color-white);
+    font-weight: 700;
+    border-radius: 9999px;
+    padding-block: 0.5rem;
+    padding-inline: 1.25rem;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+    transition: color 0.2s, background-color 0.2s;
+  }
+
+  /* Link-style button */
+  .btn-link {
+    color: var(--color-white);
+    text-decoration: underline;
+    transition: color 0.2s, background-color 0.2s;
+  }
+}
