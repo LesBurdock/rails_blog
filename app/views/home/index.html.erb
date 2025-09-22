@@ -1,7 +1,7 @@
  <%= render partial: "shared/navbar"  =%>
 <header class="relative text-center">
  <div style="background-image: var(--background-image-intro-mobile)"
-     class="h-[40rem] rounded-bl-[5rem] md:rounded-bl-[13rem] bg-center bg-no-repeat bg-cover">
+     class="h-[40rem] rounded-bl-[5rem] bg-left-bottom md:rounded-bl-[13rem] md:bg-top-right bg-no-repeat bg-cover">
 </div>
     <div class="absolute inset-x-2 bottom-40">
       <h1 class=" text-white text-4xl md:text-6xl p-6 mt-12">A modern girls strength training journey
@@ -40,7 +40,7 @@
 
   <!-- Image content -->
   <div class="relative overflow-hidden md:col-start-3 flex justify-center">
-    <%= image_tag('girl_desktop.png', class: 'hidden md:block w-auto h-auto') %>
+    <%= image_tag('girl_desktop.png', class: 'hidden md:block w-auto h-auto object-contain md:mr-[-2rem]') %>
     <%= image_tag('girl_mobile.png', class: 'block md:hidden') %>
   </div>
 
@@ -61,7 +61,7 @@
     <div class="relative grid grid-rows-2 grid-cols-1 md:grid-cols-2 md:grid-rows-1 h-full items-center">
       <!-- Illustration -->
       <div class="md:col-start-1 md:row-start-1 md:pl-24 flex justify-center md:justify-start">
-        <%= image_tag("illustration-phones.svg") %>
+        <%= image_tag("illustration-phones.svg", class: 'object-contain') %>
       </div>
 
       <!-- Text -->
@@ -80,8 +80,13 @@
   <!-- Left spacer -->
   <div class="hidden md:block"></div>
 
-  <!-- Text content -->
-  <div class="flex flex-col justify-center p-10 md:col-start-2">
+  <!-- Image content -->
+  <div class="relative overflow-hidden md:col-start-2 flex justify-center">
+    <%= image_tag('desktop_computer_girl.png', class: 'hidden md:block w-auto h-auto object-contain ml-[-2rem]') %>
+    <%= image_tag('computer_girls_mobile.png', class: 'block md:hidden') %>
+  </div>
+   <!-- Text content -->
+  <div class="flex flex-col justify-center p-10 md:col-start-3">
     <h3 class="pb-6 font-Ubuntu text-veryDarkBlue text-2xl">Free, Open, Simple</h3>
     <p class="pb-6 font-light">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -90,12 +95,6 @@
     <p class="pb-6 font-light">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
     </p>
-  </div>
-
-  <!-- Image content -->
-  <div class="relative overflow-hidden md:col-start-3 flex justify-center">
-    <%= image_tag('desktop_computer_girl.png', class: 'hidden md:block') %>
-    <%= image_tag('computer_girls_mobile.png', class: 'block md:hidden') %>
   </div>
 
   <!-- Right spacer -->
