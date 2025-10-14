@@ -2,7 +2,7 @@
 <div class="my-48">
   <h2 class="font-Ubuntu text-center text-veryDarkBlue text-2xl md:text-4xl z-10">Inspiration</h2>
   <div class="pb-12 m-8 md:m-24 mt-12">
-    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-6 xl:gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 xl:gap-8">
       <% @blog_posts.each_with_index do |blog_post, index| %>
         <% if blog_post.photo.attached? %>
           <% col_span = [1, 2].include?(index) ? 'md:col-span-2' : '' %>
