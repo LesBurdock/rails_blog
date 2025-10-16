@@ -1,5 +1,5 @@
 <% is_home = current_page?(root_path) %>
-<nav class="absolute top-0 left-0 right-0 z-10 bg-opacity-50 p-4">
+<nav class="absolute top-0 left-0 right-0 z-10 bg-opacity-50 p-8">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
       
@@ -23,21 +23,27 @@
       <!-- CENTER / RIGHT: Logo (right on mobile, center on desktop) -->
       <div class="order-2 sm:order-1 flex flex-1 justify-end sm:justify-start">
          <%= link_to root_path do %>
-            <%= image_tag(is_home ? "logo.svg" : "logo-pink.png", class: "h-8") %>
+            <%= image_tag(is_home ? "logo.svg": "logo-pink.png",  class: is_home ? "h-10" : "h-16") %>
           <% end %>
       </div>
 
       <!-- DESKTOP NAV LINKS -->
       <div class="hidden sm:flex sm:items-center sm:space-x-6 order-2">
-        <%= link_to "About Us", "#", class: "text-grayishBlue50 hover:text-white px-3 py-2" %>
-        <%= link_to "Get Inspired", blog_posts_all_path, class: "text-grayishBlue50 hover:text-white px-3 py-2" %>
-        <%= link_to "Start sharing", new_blog_post_path, class: "text-grayishBlue50 hover:text-white px-3 py-2" %>
+        <%= link_to "Be Inspired", blog_posts_all_path, class: "text-grayishBlue50 hover:text-white px-3 py-2" %>
+        <%= link_to "Share", new_blog_post_path, class: "text-grayishBlue50 hover:text-white px-3 py-2" %>
       </div>
 
-      <!-- RIGHT: Profile / Auth Buttons -->
-      <div class="order-3 flex items-center space-x-4">
+       <!-- RIGHT: Desktop Profile / Auth Buttons -->
+      <div class="pl-4 order-3 flex items-center space-x-4">
         <% if user_signed_in? %>
-          <!-- Profile button here -->
+          <!-- Desktop only -->
+          <div class="hidden sm:flex items-center space-x-2">
+            <% if current_user.avatar.attached? %>
+              <%= image_tag current_user.avatar.variant(resize_to_fill: [32,32]), class: "h-8 w-8 rounded-full" %>
+            <% else %>
+              <%= image_tag "avatar-placeholder.jpg", class: "h-8 w-8 rounded-full" %>
+            <% end %>
+          </div>
         <% else %>
           <%= link_to "Login", new_user_session_path, class: "hidden md:block text-grayishBlue50 hover:text-white" %>
           <%= link_to "Sign Up", new_user_registration_path,
@@ -48,13 +54,24 @@
   </div>
 
   <!-- MOBILE MENU -->
-  <div class="sm:hidden hidden" id="mobile-menu">
+    <div class="sm:hidden hidden" id="mobile-menu">
     <div class="space-y-1 px-2 pb-3 pt-2 bg-veryLightRed">
-      <%= link_to "About Us", "#", class: "block px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md" %>
+      <% if user_signed_in? %>
+        <div class="flex items-center space-x-2 px-3 py-2 border-b border-gray-200">
+          <% if current_user.avatar.attached? %>
+            <%= image_tag current_user.avatar.variant(resize_to_fill: [32,32]), class: "h-8 w-8 rounded-full" %>
+          <% else %>
+            <%= image_tag "avatar-placeholder.jpg", class: "h-8 w-8 rounded-full" %>
+          <% end %>
+          <span class="text-gray-50"><%= current_user.email %></span>
+        </div>
+      <% end %>
       <%= link_to "Get Inspired", blog_posts_all_path, class: "block px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md" %>
       <%= link_to "Start sharing", new_blog_post_path, class: "block px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md" %>
-      <%= link_to "Login", new_user_session_path, class: "block px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md" %>
-      <%= link_to "Sign Up", new_user_registration_path, class: "block px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md" %>
+       <% unless user_signed_in? %>
+        <%= link_to "Login", new_user_session_path, class: "block px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md" %>
+        <%= link_to "Sign Up", new_user_registration_path, class: "block px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md" %>
+      <% end %>
     </div>
   </div>
 </nav>
