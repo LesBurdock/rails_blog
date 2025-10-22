@@ -20,6 +20,10 @@
         <%= f.label :password_confirmation %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
+      <div class="flex flex-col my-4">
+  <%= f.label :avatar %>
+  <%= f.file_field :avatar, direct_upload: true %>
+</div>
       <div class="actions">
         <button class="mt-6 px-6 bg-veryLightRed hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"> <%= f.submit "Sign up" %></button>
       </div>
