@@ -1,35 +1,45 @@
 <%= render partial: "shared/navbar" %>
-<div class="relative bg-cover bg-center bg-no-repeat" style="background-image: url(<%= asset_path('background_blogpage_desktop.png') %>)">
-  <div class="py-48">
-    <h2 class="font-Ubuntu text-center text-veryDarkBlue text-2xl md:text-4xl z-10">Inspiration</h2>
-    <div class="grid grid-cols-1 md:grid-cols-[minmax(2rem,1fr)_minmax(0,20rem)_minmax(0,20rem)_minmax(0,20rem)_minmax(0,20rem)_minmax(2rem,1fr)] gap-4 md:gap-6 xl:gap-8 px-4 md:px-0 mt-16">
-  <% @blog_posts.each_with_index do |blog_post, index| %>
-    <% next unless blog_post.photo.attached? %>
-
-    <% col_span_class = case index
-      when 0 then 'md:col-start-2 md:col-span-2'  # first item spans 2 columns
-      when 1 then 'md:col-start-4 md:col-span-1'
-      when 2 then 'md:col-start-5 md:col-span-1'
-      when 3 then 'md:col-start-2 md:col-span-1'  # next row
-      when 4 then 'md:col-start-3 md:col-span-1'
-      when 5 then 'md:col-start-4 md:col-span-2'
-    end %>
-
-    <%= link_to blog_post, class: "group relative flex h-60 w-full rounded-md items-end overflow-hidden shadow-lg #{col_span_class}" do %>
-      <%= image_tag blog_post.photo, alt: blog_post.title, class: "absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" %>
-      <div class="pointer-events-none absolute inset-0 bg-[rgba(46,53,71,0.3)] "></div>
-      <span class="relative ml-4 mb-3 inline-block text-sm text-white md:ml-5 md:text-lg">
-        <%= blog_post.title %>
-      </span>
-    <% end %>
-  <% end %>
-</div>
+<div class="py-24">
+  <div class="grid grid-cols-1 md:grid-cols-[minmax(2rem,1fr)_minmax(0,20rem)_minmax(0,20rem)_minmax(0,20rem)_minmax(2rem,1fr)] gap-6 px-4 md:px-0 mt-24 py-16 bg-veryLightRed/10">
+    <!-- Hero Section -->
+    <div class="md:col-start-2 md:col-span-2 flex flex-col gap-6">
+      <!-- Image Box -->
+      <div class="relative isolate rounded-sm flex justify-center">
+        <img src="/assets/mat_pink.jpg" alt="Blog Banner" class="w-full">
+          <div class="absolute inset-0 bg-[hsl(355,100%,74%)]/20"></div>
+      </div>
+      <!-- Text Box -->
+      <div class="bg-white rounded-sm p-6">
+        <h3 class="pb-6 font-Ubuntu text-veryDarkBlue text-2xl">Header about something</h3>
+        <p class="font-light">
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+          invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+          invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+          invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+        </p>
+      </div>
+    </div>
+    <!-- Blog Posts -->
+    <div class="md:col-start-4 md:col-span-1 flex flex-col gap-4 mt-10 md:mt-0 bg-white max-w-md mx-auto md:mx-0">
+      <!-- User Posts Title -->
+      <h3 class="pt-6 pl-6 font-Ubuntu text-veryDarkBlue text-2xl">User Posts</h3>
+      <% @blog_posts.each do |blog_post| %>
+        <% next unless blog_post.photo.attached? %>
+        <%= link_to blog_post, class: "flex items-center bg-white rounded-sm overflow-hidden hover:shadow-lg transition-shadow duration-200 h-[150px]" do %>
+          <div class="flex bg-white rounded-lg shadow-md overflow-hidden h-40">
+            <%= image_tag blog_post.photo, class: "w-40 h-full object-cover flex-shrink-0 p-6" %>
+            <div class="flex-1 flex items-center">
+              <p class="font-light pr-6"><%= truncate(blog_post.title, length: 60) %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
-
+<div>
+  <p>tab stuff will go here </p>
+</div>
 <%= render partial: "shared/footer" %>
-
-
-
-
-
