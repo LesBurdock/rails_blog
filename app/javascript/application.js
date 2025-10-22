@@ -6,7 +6,7 @@ import "controllers";
 // Function to initialize dropdown and mobile menu functionality
 function initializeNavbar() {
   const userMenuButton = document.getElementById('user-menu-button');
-  const dropdownMenu = document.getElementById('dropdownbutton');
+  const dropdownMenu = document.getElementById('user-dropdown'); 
   const mobileMenuButton = document.getElementById("mobile-menu-button");
   const mobileMenu = document.getElementById("mobile-menu");
 
