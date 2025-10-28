@@ -4,12 +4,12 @@
     <!-- Hero Section -->
     <div class="md:col-start-2 md:col-span-2 flex flex-col gap-6">
       <!-- Image Box -->
-      <div class="relative isolate rounded-sm flex justify-center">
-          <%= image_tag('mat_pink.jpg', class: 'w-full' ) %>
+      <div class="relative isolate rounded-md flex justify-center">
+          <%= image_tag('mat_pink.jpg', class: 'w-full rounded-md' ) %>
           <div class="absolute inset-0 bg-[hsl(355,100%,74%)]/20"></div>
       </div>
       <!-- Text Box -->
-      <div class="bg-white rounded-sm p-6">
+      <div class="bg-white rounded-md p-6">
         <h3 class="pb-6 font-Ubuntu text-veryDarkBlue text-2xl">Header about something</h3>
         <p class="font-light">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
@@ -22,7 +22,7 @@
       </div>
     </div>
     <!-- Blog Posts -->
-    <div class="md:col-start-4 md:col-span-1 flex flex-col gap-4 mt-10 md:mt-0 bg-white max-w-md mx-auto md:mx-0">
+    <div class="md:col-start-4 md:col-span-1 flex flex-col gap-4 mt-10 md:mt-0 bg-white max-w-md mx-auto md:mx-0 rounded-md">
       <!-- User Posts Title -->
       <h3 class="pt-6 pl-6 font-Ubuntu text-veryDarkBlue text-2xl">User Posts</h3>
       <% @blog_posts.order(created_at: :desc).limit(4).each do |blog_post| %>
@@ -40,6 +40,51 @@
   </div>
 </div>
 <div>
-  <p>tab stuff will go here </p>
+<div class="grid grid-cols-1 md:grid-cols-[minmax(2rem,1fr)_minmax(0,20rem)_minmax(0,20rem)_minmax(0,20rem)_minmax(2rem,1fr)] gap-6 px-4 md:px-0">
+
+  <!-- Tabs Wrapper (centered between gutters, spanning 3 main columns) -->
+  <div class="md:col-start-2 md:col-span-3 bg-white rounded-lg py-10 px-6">
+
+    <!-- Tabs -->
+    <div id="tabs" class="w-full mx-auto">
+      
+      <!-- Tab Buttons -->
+      <div class="flex flex-col sm:flex-row">
+        <button 
+          class="tab-button px-6 py-3 text-lg font-medium focus:outline-none hover:text-textRed transition-colors duration-200 text-textRed" 
+          data-tab="nutrition">
+          Nutrition
+        </button>
+
+        <button 
+          class="tab-button px-6 py-3 text-lg font-medium focus:outline-none hover:text-textRed transition-colors duration-200 text-grayishBlue50"
+          data-tab="cardio">
+          Cardio
+        </button>
+
+        <button 
+          class="tab-button px-6 py-3 text-lg font-medium focus:outline-none hover:text-textRed transition-colors duration-200 text-grayishBlue50"
+          data-tab="strength">
+          Strength
+        </button>
+      </div>
+ <div class="w-full border-t border-gray-300 mt-2"></div>
+      <!-- Tab Panels -->
+      <div class="mt-6 p-6">
+        <div id="nutrition" class="tab-content">
+          <h2 class="text-2xl font-semibold text-veryDarkBlue">Nutrition</h2>
+        </div>
+
+        <div id="cardio" class="tab-content hidden">
+          <h2 class="text-2xl font-semibold text-veryDarkBlue">Cardio</h2>
+        </div>
+
+        <div id="strength" class="tab-content hidden">
+          <h2 class="text-2xl font-semibold text-veryDarkBlue">Strength</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 <%= render partial: "shared/footer" %>
