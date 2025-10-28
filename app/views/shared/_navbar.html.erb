@@ -29,9 +29,12 @@
 
       <!-- DESKTOP NAV LINKS -->
       <div class="hidden sm:flex sm:items-center sm:space-x-6 order-2">
-        <%= link_to "Be Inspired", blog_posts_all_path, class: "text-grayishBlue50 hover:text-textRed px-3 py-2" %>
-        <%= link_to "Share", new_blog_post_path, class: "text-grayishBlue50 hover:text-textRed px-3 py-2" %>
-      </div>
+  <%= link_to "Be Inspired", blog_posts_all_path,
+      class: "#{is_home ? 'text-grayishBlue50 hover:text-white' : 'text-textRed hover:text-veryLightRed'} px-3 py-2" %>
+
+  <%= link_to "Share", new_blog_post_path,
+      class: "#{is_home ? 'text-grayishBlue50 hover:text-white' : 'text-textRed hover:text-veryLightRed'} px-3 py-2" %>
+</div>
 
 <!-- RIGHT: Desktop Profile / Auth Buttons -->
 <div class="pl-4 order-3 flex items-center space-x-4 relative">
