@@ -41,7 +41,7 @@ function initializeNavbar() {
   }
 }
 
-document.addEventListener("turbo:load", () => {
+document.addEventListener("DOMContentLoaded", () => {
   const tabButtons = document.querySelectorAll(".tab-button");
   const tabContents = document.querySelectorAll(".tab-content");
 
@@ -50,22 +50,28 @@ document.addEventListener("turbo:load", () => {
       const target = button.dataset.tab;
 
       // Hide all tab contents
-      tabContents.forEach((content) => {
-        content.classList.add("hidden");
-      });
+      tabContents.forEach((content) => content.classList.add("hidden"));
 
-      // Remove active styles from all buttons
+      // Reset all buttons
       tabButtons.forEach((btn) => {
-        btn.classList.remove("text-textRed");
+        btn.classList.remove("tab-active", "text-textRed");
         btn.classList.add("text-grayishBlue50");
       });
 
-      // Show the selected tab and highlight button
+      // Activate selected
       document.getElementById(target).classList.remove("hidden");
-      button.classList.add("text-textRed");
+      button.classList.add("tab-active");
       button.classList.remove("text-grayishBlue50");
     });
   });
+
+  // ---- DEFAULT TAB ON LOAD ----
+  const firstButton = tabButtons[0];
+  const firstTabId = firstButton.dataset.tab;
+
+  document.getElementById(firstTabId).classList.remove("hidden");
+  firstButton.classList.add("tab-active");
+  firstButton.classList.remove("text-grayishBlue50");
 });
 
 // Initialize on turbo:load (full page load or Turbo Frame replace)
