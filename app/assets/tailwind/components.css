@@ -4,12 +4,15 @@
   /* Base button */
   .btn {
     margin: 0.75rem;           /* m-3 */
-    padding-block: 0.5rem;     /* py-2 */
+    padding-block: 0.3rem;     /* py-2 */
     padding-inline: 1.25rem;   /* px-5 */
     border-radius: 9999px;
     font-weight:300;     /* rounded-full */        /* font-semibold */
   }
-
+  .tab-active {
+    color: var(--color-textRed) !important;
+    border-color: var(--color-textRed) !important;
+  }
   /* Primary button */
   .btn-primary {
     background-color:var(--color-transparent);

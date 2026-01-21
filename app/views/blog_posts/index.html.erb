@@ -1,90 +1,151 @@
 <%= render partial: "shared/navbar" %>
-<div class="py-24">
-  <div class="grid grid-cols-1 md:grid-cols-[minmax(2rem,1fr)_minmax(0,20rem)_minmax(0,20rem)_minmax(0,20rem)_minmax(2rem,1fr)] gap-6 px-4 md:px-0 mt-24 py-16 bg-veryLightRed/10">
-    <!-- Hero Section -->
-    <div class="md:col-start-2 md:col-span-2 flex flex-col gap-6">
-      <!-- Image Box -->
-      <div class="relative isolate rounded-md flex justify-center">
-          <%= image_tag('mat_pink.jpg', class: 'w-full rounded-md' ) %>
-          <div class="absolute inset-0 bg-[hsl(355,100%,74%)]/20"></div>
+<div class="py-24 ">
+<div class="mt-24 px-4 md:px-0">
+<h2 class="mt-24 font-Ubuntu m-12 text-center text-veryDarkBlue text-2xl md:text-4xl z-10">
+    Recent Posts from the Community
+  </h2>
+  <div class="grid grid-cols-1 md:grid-cols-[minmax(2rem,1fr)_minmax(0,60rem)_minmax(0,40rem)_minmax(2rem,1fr)] gap-6">
+
+    <!-- Left spacer -->
+    <div class="hidden md:block"></div>
+
+    <!-- Featured Post -->
+    <% latest_post = @blog_posts.order(created_at: :desc).first %>
+    <% if latest_post.photo.attached? %>
+      <div class="md:col-start-2 md:col-span-1 flex flex-col gap-4">
+        <%= link_to latest_post do %>
+          <div class="flex flex-col">
+            <%= image_tag latest_post.photo, class: "w-full h-68 object-cover rounded-md" %>
+            <h3 class="font-Ubuntu text-2xl mt-2 text-veryDarkBlue"><%= latest_post.title %></h3>
+            <p class="font-light text-gray-700 mt-1"><%= truncate(latest_post.content, length: 150) %></p>
+          </div>
+        <% end %>
       </div>
-      <!-- Text Box -->
-      <div class="bg-white rounded-md p-6">
-        <h3 class="pb-6 font-Ubuntu text-veryDarkBlue text-2xl">Header about something</h3>
-        <p class="font-light">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-          invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-          invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-          invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-        </p>
-      </div>
-    </div>
-    <!-- Blog Posts -->
-    <div class="md:col-start-4 md:col-span-1 flex flex-col gap-4 mt-10 md:mt-0 bg-white max-w-md mx-auto md:mx-0 rounded-md">
-      <!-- User Posts Title -->
-      <h3 class="pt-6 pl-6 font-Ubuntu text-veryDarkBlue text-2xl">User Posts</h3>
-      <% @blog_posts.order(created_at: :desc).limit(4).each do |blog_post| %>
-        <% next unless blog_post.photo.attached? %>
-        <%= link_to blog_post, class: "flex items-center bg-white rounded-sm overflow-hidden hover:shadow-lg transition-shadow duration-200 h-[150px]" do %>
-          <div class="flex bg-white rounded-lg shadow-md overflow-hidden h-40">
-            <%= image_tag blog_post.photo, class: "w-40 h-full object-cover flex-shrink-0 p-6" %>
-            <div class="flex-1 flex items-center">
-              <p class="font-light pr-6"><%= truncate(blog_post.title, length: 60) %></p>
+    <% end %>
+
+    <!-- Right column: 3 smaller posts -->
+    <div class="md:col-start-3 md:col-span-1 flex flex-col gap-4">
+      <% @blog_posts.offset(1).limit(3).each do |post| %>
+        <% next unless post.photo.attached? %>
+        <%= link_to post do %>
+          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <%= image_tag post.photo, class: "w-full sm:w-24 h-24 sm:h-24 object-cover rounded-md flex-shrink-0" %>
+            <div class="flex-1">
+              <h4 class="font-Ubuntu text-lg text-veryDarkBlue"><%= post.title %></h4>
+              <p class="font-light text-gray-700"><%= truncate(post.content, length: 80) %></p>
             </div>
           </div>
         <% end %>
       <% end %>
     </div>
+
+    <!-- Right spacer -->
+    <div class="hidden md:block"></div>
   </div>
 </div>
-<div>
-<div class="grid grid-cols-1 md:grid-cols-[minmax(2rem,1fr)_minmax(0,20rem)_minmax(0,20rem)_minmax(0,20rem)_minmax(2rem,1fr)] gap-6 px-4 md:px-0">
+  <h2 class="mt-24 font-Ubuntu m-8 text-center text-veryDarkBlue text-2xl md:text-4xl z-10">
+    Stronger for the Future
+  </h2>
 
-  <!-- Tabs Wrapper (centered between gutters, spanning 3 main columns) -->
-  <div class="md:col-start-2 md:col-span-3 bg-white rounded-lg py-10 px-6">
+  <div class="grid grid-cols-1 md:grid-cols-[minmax(2rem,1fr)_minmax(0,26rem)_minmax(0,26rem)_minmax(0,26rem)_minmax(2rem,1fr)] 
+              gap-6 px-4 md:px-0 mb-24">
 
-    <!-- Tabs -->
-    <div id="tabs" class="w-full mx-auto">
-      
-      <!-- Tab Buttons -->
-      <div class="flex flex-col sm:flex-row">
-        <button 
-          class="tab-button px-6 py-3 text-lg font-medium focus:outline-none hover:text-textRed transition-colors duration-200 text-textRed" 
-          data-tab="nutrition">
-          Nutrition
-        </button>
+    <!-- Tabs Wrapper (center columns) -->
+    <div class="md:col-start-2 md:col-span-3 bg-white rounded-lg px-6">
+      <div class="flex justify-center">
 
-        <button 
-          class="tab-button px-6 py-3 text-lg font-medium focus:outline-none hover:text-textRed transition-colors duration-200 text-grayishBlue50"
-          data-tab="cardio">
-          Cardio
-        </button>
+        <!-- Mobile row | Desktop row -->
+        <div class="flex flex-row md:flex-row gap-4 pb-4">
 
-        <button 
-          class="tab-button px-6 py-3 text-lg font-medium focus:outline-none hover:text-textRed transition-colors duration-200 text-grayishBlue50"
-          data-tab="strength">
-          Strength
-        </button>
-      </div>
- <div class="w-full border-t border-gray-300 mt-2"></div>
-      <!-- Tab Panels -->
-      <div class="mt-6 p-6">
-        <div id="nutrition" class="tab-content">
-          <h2 class="text-2xl font-semibold text-veryDarkBlue">Nutrition</h2>
-        </div>
+          <!-- Nutrition -->
+          <button 
+            class="tab-button btn btn-primary focus:outline-none transition-colors duration-200"
+            data-tab="nutrition">
+            <span class="md:hidden text-2xl"><%= image_tag('poke-bowl.svg')%></span>
+            <span class="hidden md:inline">Nutrition</span>
+          </button>
 
-        <div id="cardio" class="tab-content hidden">
-          <h2 class="text-2xl font-semibold text-veryDarkBlue">Cardio</h2>
-        </div>
+          <!-- Cardio -->
+          <button 
+            class="tab-button btn btn-primary focus:outline-none transition-colors duration-200"
+            data-tab="cardio">
+            <span class="md:hidden text-2xl">🏃‍♂️</span>
+            <span class="hidden md:inline">Cardio</span>
+          </button>
 
-        <div id="strength" class="tab-content hidden">
-          <h2 class="text-2xl font-semibold text-veryDarkBlue">Strength</h2>
+          <!-- Strength -->
+          <button 
+            class="tab-button btn btn-primary focus:outline-none transition-colors duration-200"
+            data-tab="strength">
+            <span class="md:hidden text-2xl">💪</span>
+            <span class="hidden md:inline">Strength</span>
+          </button>
+
         </div>
       </div>
     </div>
-  </div>
+
+    <!-- TAB CONTENT WRAPPER (IMPORTANT: inside same grid and same column span) -->
+    <div class="md:col-start-2 md:col-span-3 mt-6 space-y-6">
+
+      <!-- Nutrition Tab -->
+      <div id="nutrition" class="tab-content relative overflow-hidden">
+        <div class="border border-gray-200 rounded-md overflow-hidden p-6">
+          <div class="grid grid-cols-1 md:grid-cols-2">
+
+            <div class="w-full h-full">
+              <%= image_tag('nutrition_eating.png', class: "w-full h-full object-cover") %>
+            </div>
+
+            <div class="p-8 text-white bg-veryDarkGrayBlue flex flex-col justify-center">
+              <h3 class="text-2xl font-semibold mb-4">Nutrition Essentials</h3>
+              <p class="text-gray-200 text-sm leading-relaxed">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod nisl vel tincidunt fermentum.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Cardio Tab -->
+      <div id="cardio" class="tab-content hidden relative overflow-hidden">
+        <div class="border border-gray-200 rounded-lg grid grid-cols-1 md:grid-cols-2 overflow-hidden p-6">
+
+          <div class="w-full h-full">
+            <%= image_tag('cardio.png', class: "w-full h-full object-cover") %>
+          </div>
+
+          <div class="p-8 text-white bg-blue500 flex flex-col justify-center">
+            <h3 class="text-2xl font-semibold mb-4">Cardio Training</h3>
+            <p class="text-gray-200 text-sm leading-relaxed">
+              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Strength Tab -->
+      <div id="strength" class="tab-content hidden relative overflow-hidden">
+        <div class="border border-gray-200 rounded-lg grid grid-cols-1 md:grid-cols-2 overflow-hidden p-6">
+
+          <div class="w-full h-full">
+            <%= image_tag('strength.png', class: "w-full h-full object-cover") %>
+          </div>
+
+          <div class="p-8 text-white bg-veryLightGray flex flex-col justify-center">
+            <h3 class="text-2xl font-semibold mb-4">Strength Workouts</h3>
+            <p class="text-gray-200 text-sm leading-relaxed">
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </div> <!-- END TAB CONTENT WRAPPER -->
+
+  </div> <!-- END GRID -->
 </div>
 </div>
-<%= render partial: "shared/footer" %>
