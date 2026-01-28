@@ -16,6 +16,10 @@
 <body class='font-body text-base text-veryDarkGrayishBlue leading-loose'>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
+     <%= yield %>
+
+  <footer class="mt-auto">
+    <%= render partial: "shared/footer" %>
+  </footer>
 </body>
 </html>

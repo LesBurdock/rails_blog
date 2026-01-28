@@ -41,6 +41,39 @@ function initializeNavbar() {
   }
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  const tabButtons = document.querySelectorAll(".tab-button");
+  const tabContents = document.querySelectorAll(".tab-content");
+
+  tabButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const target = button.dataset.tab;
+
+      // Hide all tab contents
+      tabContents.forEach((content) => content.classList.add("hidden"));
+
+      // Reset all buttons
+      tabButtons.forEach((btn) => {
+        btn.classList.remove("tab-active", "text-textRed");
+        btn.classList.add("text-grayishBlue50");
+      });
+
+      // Activate selected
+      document.getElementById(target).classList.remove("hidden");
+      button.classList.add("tab-active");
+      button.classList.remove("text-grayishBlue50");
+    });
+  });
+
+  // ---- DEFAULT TAB ON LOAD ----
+  const firstButton = tabButtons[0];
+  const firstTabId = firstButton.dataset.tab;
+
+  document.getElementById(firstTabId).classList.remove("hidden");
+  firstButton.classList.add("tab-active");
+  firstButton.classList.remove("text-grayishBlue50");
+});
+
 // Initialize on turbo:load (full page load or Turbo Frame replace)
 document.addEventListener('turbo:load', initializeNavbar);
 
