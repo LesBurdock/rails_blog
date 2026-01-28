@@ -15,8 +15,8 @@
       <div class="md:col-start-2 md:col-span-1 flex flex-col gap-4">
         <%= link_to latest_post do %>
           <div class="flex flex-col">
-            <%= image_tag latest_post.photo, class: "w-full h-68 object-cover rounded-md" %>
-            <h3 class="font-Ubuntu text-2xl mt-2 text-veryDarkBlue"><%= latest_post.title %></h3>
+            <%= image_tag latest_post.photo, class: "w-full h-84 object-cover rounded-md" %>
+            <h3 class="font-Ubuntu text-2xl mt-2 text-veryDarkBlue pt-4"><%= latest_post.title %></h3>
             <p class="font-light text-gray-700 mt-1"><%= truncate(latest_post.content, length: 150) %></p>
           </div>
         <% end %>
@@ -25,7 +25,7 @@
 
     <!-- Right column: 3 smaller posts -->
     <div class="md:col-start-3 md:col-span-1 flex flex-col gap-4">
-      <% @blog_posts.offset(1).limit(3).each do |post| %>
+      <% @blog_posts.offset(1).limit(4).each do |post| %>
         <% next unless post.photo.attached? %>
         <%= link_to post do %>
           <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
@@ -61,24 +61,21 @@
           <button 
             class="tab-button btn btn-primary focus:outline-none transition-colors duration-200"
             data-tab="nutrition">
-            <span class="md:hidden text-2xl"><%= image_tag('poke-bowl.svg')%></span>
-            <span class="hidden md:inline">Nutrition</span>
+            <span>Nutrition</span>
           </button>
 
           <!-- Cardio -->
           <button 
             class="tab-button btn btn-primary focus:outline-none transition-colors duration-200"
             data-tab="cardio">
-            <span class="md:hidden text-2xl">🏃‍♂️</span>
-            <span class="hidden md:inline">Cardio</span>
+            <span>Cardio</span>
           </button>
 
           <!-- Strength -->
           <button 
             class="tab-button btn btn-primary focus:outline-none transition-colors duration-200"
             data-tab="strength">
-            <span class="md:hidden text-2xl">💪</span>
-            <span class="hidden md:inline">Strength</span>
+            <span>Strength</span>
           </button>
 
         </div>
@@ -134,7 +131,7 @@
             <%= image_tag('strength.png', class: "w-full h-full object-cover") %>
           </div>
 
-          <div class="p-8 text-white bg-veryLightGray flex flex-col justify-center">
+          <div class="p-8 text-white bg-veryDarkGrayBlue flex flex-col justify-center">
             <h3 class="text-2xl font-semibold mb-4">Strength Workouts</h3>
             <p class="text-gray-200 text-sm leading-relaxed">
               Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.
