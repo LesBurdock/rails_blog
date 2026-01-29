@@ -44,3 +44,7 @@
     transition: color 0.2s, background-color 0.2s;
   }
 }
+
+.space-y-6 > * + * {
+  margin-top: 1.5rem;
+}
