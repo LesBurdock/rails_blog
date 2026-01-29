@@ -91,6 +91,19 @@ document.addEventListener("turbo:load", () => {
   }
 });
 
+
+document.addEventListener("turbo:load", () => {
+  const fileInput = document.querySelector('input[type="file"][name="blog_post[photo]"]');
+  const fileNameDisplay = document.getElementById("photo-file-name");
+
+  if (fileInput && fileNameDisplay) {
+    fileInput.addEventListener("change", () => {
+      fileNameDisplay.textContent = fileInput.files.length > 0 ? fileInput.files[0].name : "No file chosen";
+    });
+  }
+});
+
+
 // Initialize on turbo:load (full page load or Turbo Frame replace)
 document.addEventListener('turbo:load', initializeNavbar);
 
