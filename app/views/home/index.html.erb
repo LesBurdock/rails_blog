@@ -1,13 +1,10 @@
  <%= render partial: "shared/navbar"  =%>
-<header class="relative text-center">
+<header class="text-center">
   <div style="background-image: var(--background-image-intro-mobile)"
-     class="h-[40rem] rounded-bl-[5rem] bg-left-bottom md:rounded-bl-[13rem] md:bg-top-right bg-no-repeat bg-cover">
-  </div>
-  <div class="absolute inset-x-2 bottom-40">
-    <h1 class=" text-white text-4xl md:text-6xl p-6 mt-12">A modern girls strength training journey
-    </h1>
+     class="h-[40rem] rounded-bl-[5rem] md:rounded-bl-[13rem] bg-no-repeat bg-cover flex flex-col items-center justify-center">
+    <h1 class="text-white text-4xl md:text-6xl px-6 pb-6 tracking-tight">A modern girls strength training journey</h1>
     <p class="pb-3 font-light text-xl text-white/85">Share and Inspire through your fitness journey</p>
-    <div class="md:flex justify-center gap-6 mt-6">
+    <div class="md:flex justify-center gap-6 mt-4">
       <%= button_to blog_posts_all_path, method: :get, class: "btn btn-primary" do %>
         Get Inspired
       <% end %>
@@ -16,12 +13,11 @@
       <% end %>
     </div>
   </div>
-</div>
 </header>
-  <div class="space-y-16 text-center md:text-left mt-24">
+  <div class="text-center md:text-left mt-16 overflow-visible">
     <h2 class="relative z-10 font-Ubuntu m-8 text-center text-veryDarkBlue text-3xl md:text-4xl">Stronger for the Future</h2>
     <!-- Section 1: Intro with text and image -->
-    <div class="grid grid-cols-1 md:grid-cols-[minmax(2rem,1fr)_minmax(0,40rem)_minmax(0,40rem)_minmax(2rem,1fr)] gap-6 px-4 md:px-0 pb-12">
+    <div class="grid grid-cols-1 md:grid-cols-[minmax(2rem,1fr)_minmax(0,40rem)_minmax(0,40rem)_minmax(2rem,1fr)] gap-6 px-4 md:px-0 pt-8 md:pt-0 pb-12 overflow-visible">
       <!-- Left spacer -->
       <div class="hidden md:block"></div>
       <!-- Text content -->
@@ -35,35 +31,36 @@
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
       </div>
-      <!-- Image content - bleeds right to viewport edge, overflows top/bottom -->
-      <div class="row-start-1 md:col-start-3 md:col-span-2 md:-my-16 flex items-center md:h-[520px]">
+      <!-- Image content - bleeds right to viewport edge, overflows bottom only on desktop -->
+      <div class="row-start-1 md:col-start-3 md:col-span-2 md:-mb-16 flex items-center md:h-[520px]">
         <%= image_tag('sitting_girl_desktop.png', class: 'hidden md:block w-4/5 h-full object-cover object-center ml-auto') %>
         <%= image_tag('sitting_girl_mobile.png', class: 'block md:hidden w-2/3 mx-auto') %>
       </div>
     </div>
       <!-- Section 2 -->
-    <div class="grid grid-cols-1 md:grid-cols-[minmax(2rem,1fr)_minmax(0,40rem)_minmax(0,40rem)_minmax(2rem,1fr)] gap-6 relative py-12 my-16">
+    <div class="grid grid-cols-1 md:grid-cols-[minmax(2rem,1fr)_minmax(0,40rem)_minmax(0,40rem)_minmax(2rem,1fr)] gap-6 relative pt-0 pb-12 md:py-12 mt-32 md:mt-16 mb-0">
       <!-- Background layer - height driven by text column -->
       <div class="absolute inset-0 col-span-full rounded-bl-[10rem] rounded-tr-[10rem] overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-r from-[hsla(237,17%,21%,0.95)] to-[hsla(237,23%,32%,0.95)]"></div>
         <%= image_tag('bg-pattern-circles.svg', class: 'absolute inset-0 w-full h-full object-cover') %>
+        <div class="absolute inset-0 bg-veryDarkGrayBlue/70"></div>
       </div>
-      <!-- Illustration - absolute on desktop so it doesn't drive row height, bleeds top/bottom -->
-      <div class="md:col-start-2 relative z-10">
-        <%= image_tag("illustration-phones.svg", class: 'md:absolute md:bottom-0 md:h-[160%] w-auto object-contain') %>
+      <!-- Illustration - breaks above background on mobile, sits at top of section on desktop -->
+      <div class="md:col-start-2 relative z-10 -mt-24 md:-mt-12 flex justify-center">
+        <%= image_tag("illustration-phones.svg", class: 'h-64 md:h-[32rem] w-auto object-contain') %>
       </div>
       <!-- Text -->
       <div class="md:col-start-3 flex flex-col justify-center text-center md:text-left relative z-10 p-10">
-        <h1 class="mt-0 text-4xl md:mt-12 text-grayishBlue50">Content that reflects reality</h1>
+        <h2 class="text-4xl text-grayishBlue50">Content that reflects reality</h2>
         <p class="text-grayishBlue pt-12 font-light">
           Lore Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
         </p>
       </div>
     </div>
     <!-- Section 3: Free / Powerful -->
-    <div class="grid grid-cols-1 md:grid-cols-[minmax(2rem,1fr)_minmax(0,40rem)_minmax(0,40rem)_minmax(2rem,1fr)] gap-6 md:px-0 pb-12 mt-32">
-      <!-- Image content - bleeds left to viewport edge, overflows top/bottom -->
-      <div class="md:col-start-1 md:col-span-2 md:-my-16 flex items-center md:h-[520px]">
+    <div class="grid grid-cols-1 md:grid-cols-[minmax(2rem,1fr)_minmax(0,40rem)_minmax(0,40rem)_minmax(2rem,1fr)] gap-6 md:px-0 pt-8 md:pt-0 pb-12 mt-16 overflow-visible">
+      <!-- Image content - bleeds left to viewport edge, overflows bottom only on desktop -->
+      <div class="md:col-start-1 md:col-span-2 md:-mb-16 flex items-center md:h-[520px]">
         <%= image_tag('bottom_desktop.png', class: 'hidden md:block w-4/5 h-full object-cover object-center mr-auto') %>
         <%= image_tag('jump_mobile.png', class: 'block md:hidden w-2/3 mx-auto') %>
       </div>
