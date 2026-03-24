@@ -1,148 +1,162 @@
 <%= render partial: "shared/navbar" %>
-<div class="py-24 ">
-<div class="mt-24 px-4 md:px-0">
-<h2 class="mt-24 font-Ubuntu m-12 text-center text-veryDarkBlue text-2xl md:text-4xl z-10">
-    Recent Posts from the Community
-  </h2>
-  <div class="grid grid-cols-1 md:grid-cols-[minmax(2rem,1fr)_minmax(0,60rem)_minmax(0,40rem)_minmax(2rem,1fr)] gap-6">
 
-    <!-- Left spacer -->
-    <div class="hidden md:block"></div>
+<!-- Category band -->
+<div class="relative py-16 mt-32 mb-16">
 
-    <!-- Featured Post -->
-    <% latest_post = @blog_posts.order(created_at: :desc).first %>
-    <% if latest_post.photo.attached? %>
-      <div class="md:col-start-2 md:col-span-1 flex flex-col gap-4">
-        <%= link_to latest_post do %>
-          <div class="flex flex-col">
-            <%= image_tag latest_post.photo, class: "w-full h-84 object-cover rounded-md" %>
-            <h3 class="font-Ubuntu text-2xl mt-2 text-veryDarkBlue pt-4"><%= latest_post.title %></h3>
-            <p class="font-light text-gray-700 mt-1"><%= truncate(latest_post.content, length: 150) %></p>
+  <!-- Background -->
+  <div class="absolute inset-0 rounded-bl-[4rem] rounded-tr-[4rem] overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-[hsla(237,17%,21%,0.95)] to-[hsla(237,23%,32%,0.95)]"></div>
+    <%= image_tag('bg-pattern-circles.svg', class: 'absolute right-0 top-0 h-full w-1/2 object-cover object-left') %>
+    <div class="absolute inset-0 bg-veryDarkGrayBlue/70"></div>
+  </div>
+
+  <!-- Tab buttons -->
+  <div class="relative z-10 pt-10 px-8 md:px-20">
+    <div class="flex gap-10">
+      <button class="tab-button pb-4 font-Ubuntu text-lg text-grayishBlue50 transition-all duration-200 focus:outline-none" data-tab="nutrition">Nutrition</button>
+      <button class="tab-button pb-4 font-Ubuntu text-lg text-grayishBlue50 transition-all duration-200 focus:outline-none" data-tab="cardio">Cardio</button>
+      <button class="tab-button pb-4 font-Ubuntu text-lg text-grayishBlue50 transition-all duration-200 focus:outline-none" data-tab="strength">Strength</button>
+    </div>
+    <div class="border-t border-white/20"></div>
+  </div>
+
+  <!-- Tab content -->
+  <div class="relative z-10">
+
+    <div id="nutrition" class="tab-content">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 px-8 md:px-20 py-16">
+        <div>
+          <h3 class="text-4xl md:text-5xl font-Ubuntu text-white leading-tight">Fuel Your Training.<br>Fuel Your Life.</h3>
+        </div>
+        <div class="flex flex-col justify-center">
+          <p class="text-grayishBlue font-light leading-relaxed mb-4">
+            What you eat is just as important as how you train. Getting your nutrition right means showing up fuelled — protein to rebuild muscle, carbs for energy, and real food that keeps you consistent without the guilt.
+          </p>
+          <p class="text-grayishBlue font-light leading-relaxed mb-8">
+            Forget perfection. Focus on habits that work with your life: a solid pre-workout meal, enough protein across the day, and hydration that supports recovery.
+          </p>
+          <%= link_to user_signed_in? ? new_blog_post_path : new_user_session_path,
+              class: "self-start border border-white text-white font-medium py-2 px-8 rounded-full hover:bg-white hover:text-veryDarkGrayBlue transition-colors duration-200" do %>
+            Share your nutrition story &rarr;
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div id="cardio" class="tab-content hidden">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 px-8 md:px-20 py-16">
+        <div>
+          <h3 class="text-4xl md:text-5xl font-Ubuntu text-white leading-tight">Build Your Base.<br>Go the Distance.</h3>
+        </div>
+        <div class="flex flex-col justify-center">
+          <p class="text-grayishBlue font-light leading-relaxed mb-4">
+            Cardio and strength training aren't opposites — they're partners. Zone 2 steady-state work builds your aerobic engine, improves recovery between sets, and keeps your heart healthy for the long run.
+          </p>
+          <p class="text-grayishBlue font-light leading-relaxed mb-8">
+            Whether it's a long walk, a morning run, or short HIIT sessions, the key is consistency over intensity. Find what you enjoy, and you'll actually keep doing it.
+          </p>
+          <%= link_to user_signed_in? ? new_blog_post_path : new_user_session_path,
+              class: "self-start border border-white text-white font-medium py-2 px-8 rounded-full hover:bg-white hover:text-veryDarkGrayBlue transition-colors duration-200" do %>
+            Share your cardio journey &rarr;
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div id="strength" class="tab-content hidden">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 px-8 md:px-20 py-16">
+        <div>
+          <h3 class="text-4xl md:text-5xl font-Ubuntu text-white leading-tight">Lift With Purpose.<br>Get Stronger.</h3>
+        </div>
+        <div class="flex flex-col justify-center">
+          <p class="text-grayishBlue font-light leading-relaxed mb-4">
+            Progressive overload is the foundation of getting stronger. You don't need to go heavier every session — adding a rep, improving your form, or reducing rest time all count as progress.
+          </p>
+          <p class="text-grayishBlue font-light leading-relaxed mb-8">
+            Compound movements — squats, deadlifts, rows, presses — give you the most return for your effort. Nail the fundamentals first, and the results will follow.
+          </p>
+          <%= link_to user_signed_in? ? new_blog_post_path : new_user_session_path,
+              class: "self-start border border-white text-white font-medium py-2 px-8 rounded-full hover:bg-white hover:text-veryDarkGrayBlue transition-colors duration-200" do %>
+            Share your strength journey &rarr;
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Page heading -->
+<div class="text-center pt-12 pb-10 px-4">
+  <h1 class="font-Ubuntu text-4xl md:text-5xl text-veryDarkBlue">Be Inspired</h1>
+  <p class="mt-3 font-light text-veryDarkGrayishBlue text-lg">Stories and inspiration from the community</p>
+  <div class="mt-6 mx-auto w-16 border-t-2 border-veryLightRed"></div>
+</div>
+
+<!-- Alternating post rows -->
+<div class="space-y-0">
+  <% @blog_posts.each_with_index do |post, index| %>
+    <% even = index.even? %>
+
+    <% if post.photo.attached? %>
+      <!-- Post with photo: alternating image/text -->
+      <div class="grid grid-cols-1 md:grid-cols-[minmax(2rem,1fr)_minmax(0,40rem)_minmax(0,40rem)_minmax(2rem,1fr)] py-12 <%= index < @blog_posts.size - 1 ? 'border-b border-gray-100' : '' %>">
+        <div class="hidden md:block"></div>
+
+        <% if even %>
+          <!-- Image left, text right -->
+          <div class="md:col-start-2">
+            <%= link_to post, class: "block w-full h-72 md:h-80 overflow-hidden rounded-md" do %>
+              <%= image_tag post.photo, class: "w-full h-full object-cover object-center" %>
+            <% end %>
+          </div>
+          <div class="md:col-start-3 flex flex-col justify-center px-4 md:px-10 pt-6 md:pt-0">
+            <h2 class="font-Ubuntu text-2xl md:text-3xl text-veryDarkBlue mb-4"><%= post.title %></h2>
+            <p class="font-light text-veryDarkGrayishBlue leading-relaxed mb-6">
+              <%= post.extract.present? ? post.extract : truncate(post.content, length: 200) %>
+            </p>
+            <%= link_to "Read more →", post, class: "self-start border border-textRed text-textRed font-medium py-2 px-6 rounded-full hover:bg-textRed hover:text-white transition-colors duration-200" %>
+          </div>
+        <% else %>
+          <!-- Text left, image right -->
+          <div class="md:col-start-2 flex flex-col justify-center px-4 md:px-10 pt-6 md:pt-0 order-2 md:order-1">
+            <h2 class="font-Ubuntu text-2xl md:text-3xl text-veryDarkBlue mb-4"><%= post.title %></h2>
+            <p class="font-light text-veryDarkGrayishBlue leading-relaxed mb-6">
+              <%= post.extract.present? ? post.extract : truncate(post.content, length: 200) %>
+            </p>
+            <%= link_to "Read more →", post, class: "self-start border border-textRed text-textRed font-medium py-2 px-6 rounded-full hover:bg-textRed hover:text-white transition-colors duration-200" %>
+          </div>
+          <div class="md:col-start-3 order-1 md:order-2">
+            <%= link_to post, class: "block w-full h-72 md:h-80 overflow-hidden rounded-md" do %>
+              <%= image_tag post.photo, class: "w-full h-full object-cover object-center" %>
+            <% end %>
           </div>
         <% end %>
+
+        <div class="hidden md:block"></div>
+      </div>
+
+    <% else %>
+      <!-- Post without photo: centered text card -->
+      <div class="grid grid-cols-1 md:grid-cols-[minmax(2rem,1fr)_minmax(0,80rem)_minmax(2rem,1fr)] py-12 <%= index < @blog_posts.size - 1 ? 'border-b border-gray-100' : '' %>">
+        <div class="hidden md:block"></div>
+        <div class="md:col-start-2 px-4 md:px-10">
+          <h2 class="font-Ubuntu text-2xl md:text-3xl text-veryDarkBlue mb-4"><%= post.title %></h2>
+          <p class="font-light text-veryDarkGrayishBlue leading-relaxed mb-6">
+            <%= post.extract.present? ? post.extract : truncate(post.content, length: 300) %>
+          </p>
+          <%= link_to "Read more →", post, class: "inline-block border border-textRed text-textRed font-medium py-2 px-6 rounded-full hover:bg-textRed hover:text-white transition-colors duration-200" %>
+        </div>
+        <div class="hidden md:block"></div>
       </div>
     <% end %>
 
-    <!-- Right column: 3 smaller posts -->
-    <div class="md:col-start-3 md:col-span-1 flex flex-col gap-4">
-      <% @blog_posts.offset(1).limit(4).each do |post| %>
-        <% next unless post.photo.attached? %>
-        <%= link_to post do %>
-          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <%= image_tag post.photo, class: "w-full sm:w-24 h-24 sm:h-24 object-cover rounded-md flex-shrink-0" %>
-            <div class="flex-1">
-              <h4 class="font-Ubuntu text-lg text-veryDarkBlue"><%= post.title %></h4>
-              <p class="font-light text-gray-700"><%= truncate(post.content, length: 80) %></p>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
+  <% end %>
+
+  <% if @blog_posts.empty? %>
+    <div class="text-center py-24">
+      <p class="font-light text-veryDarkGrayishBlue text-lg">No posts yet. Be the first to share your journey.</p>
+      <%= link_to "Start Sharing", new_blog_post_path, class: "mt-6 inline-block border border-veryDarkBlue text-veryDarkBlue font-medium py-2 px-8 rounded-full hover:bg-veryDarkBlue hover:text-white transition-colors duration-200" %>
     </div>
-
-    <!-- Right spacer -->
-    <div class="hidden md:block"></div>
-  </div>
-</div>
-  <h2 class="mt-24 font-Ubuntu m-8 text-center text-veryDarkBlue text-2xl md:text-4xl z-10">
-    Stronger for the Future
-  </h2>
-
-  <div class="grid grid-cols-1 md:grid-cols-[minmax(2rem,1fr)_minmax(0,26rem)_minmax(0,26rem)_minmax(0,26rem)_minmax(2rem,1fr)] 
-              gap-6 px-4 md:px-0 mb-24">
-
-    <!-- Tabs Wrapper (center columns) -->
-    <div class="md:col-start-2 md:col-span-3 bg-white rounded-lg px-6">
-      <div class="flex justify-center">
-
-        <!-- Mobile row | Desktop row -->
-        <div class="flex flex-row md:flex-row gap-4 pb-4">
-
-          <!-- Nutrition -->
-          <button 
-            class="tab-button btn btn-primary focus:outline-none transition-colors duration-200"
-            data-tab="nutrition">
-            <span>Nutrition</span>
-          </button>
-
-          <!-- Cardio -->
-          <button 
-            class="tab-button btn btn-primary focus:outline-none transition-colors duration-200"
-            data-tab="cardio">
-            <span>Cardio</span>
-          </button>
-
-          <!-- Strength -->
-          <button 
-            class="tab-button btn btn-primary focus:outline-none transition-colors duration-200"
-            data-tab="strength">
-            <span>Strength</span>
-          </button>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- TAB CONTENT WRAPPER (IMPORTANT: inside same grid and same column span) -->
-    <div class="md:col-start-2 md:col-span-3 mt-6 space-y-6">
-
-      <!-- Nutrition Tab -->
-      <div id="nutrition" class="tab-content relative overflow-hidden">
-        <div class="border border-gray-200 rounded-md overflow-hidden p-6">
-          <div class="grid grid-cols-1 md:grid-cols-2">
-
-            <div class="w-full h-full">
-              <%= image_tag('nutrition_eating.png', class: "w-full h-full object-cover") %>
-            </div>
-
-            <div class="p-8 text-white bg-veryDarkGrayBlue flex flex-col justify-center">
-              <h3 class="text-2xl font-semibold mb-4">Nutrition Essentials</h3>
-              <p class="text-gray-200 text-sm leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod nisl vel tincidunt fermentum.
-              </p>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      <!-- Cardio Tab -->
-      <div id="cardio" class="tab-content hidden relative overflow-hidden">
-        <div class="border border-gray-200 rounded-lg grid grid-cols-1 md:grid-cols-2 overflow-hidden p-6">
-
-          <div class="w-full h-full">
-            <%= image_tag('cardio.png', class: "w-full h-full object-cover") %>
-          </div>
-
-          <div class="p-8 text-white bg-blue500 flex flex-col justify-center">
-            <h3 class="text-2xl font-semibold mb-4">Cardio Training</h3>
-            <p class="text-gray-200 text-sm leading-relaxed">
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.
-            </p>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Strength Tab -->
-      <div id="strength" class="tab-content hidden relative overflow-hidden">
-        <div class="border border-gray-200 rounded-lg grid grid-cols-1 md:grid-cols-2 overflow-hidden p-6">
-
-          <div class="w-full h-full">
-            <%= image_tag('strength.png', class: "w-full h-full object-cover") %>
-          </div>
-
-          <div class="p-8 text-white bg-veryDarkGrayBlue flex flex-col justify-center">
-            <h3 class="text-2xl font-semibold mb-4">Strength Workouts</h3>
-            <p class="text-gray-200 text-sm leading-relaxed">
-              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.
-            </p>
-          </div>
-
-        </div>
-      </div>
-
-    </div> <!-- END TAB CONTENT WRAPPER -->
-
-  </div> <!-- END GRID -->
-</div>
+  <% end %>
 </div>

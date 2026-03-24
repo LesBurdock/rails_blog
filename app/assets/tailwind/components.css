@@ -10,19 +10,20 @@
     font-weight:300;     /* rounded-full */        /* font-semibold */
   }
   .tab-active {
-    color: var(--color-textRed) !important;
-    border-color: var(--color-textRed) !important;
+    color: var(--color-white) !important;
+    background-color: transparent !important;
+    border-bottom: 2px solid var(--color-veryLightRed) !important;
   }
   /* Primary button */
   .btn-primary {
-    background-color:var(--color-transparent);
-    color: var(--color-grayishBlue50);
-    border: 0.1rem solid var(--color-grayishBlue50);
+    background-color: var(--color-transparent);
+    color: var(--color-white);
+    border: 0.1rem solid var(--color-white);
   }
-    .btn-primary:hover {
-      background-color: var(--color-white);
-      color: var(--color-textRed);
-    }
+  .btn-primary:hover {
+    background-color: var(--color-white);
+    color: var(--color-textRed);
+  }
 
   /* Secondary / Outline button */
   .btn-secondary {

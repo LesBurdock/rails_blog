@@ -1,5 +1,6 @@
 <% is_home = current_page?(root_path) %>
-<nav class="absolute top-0 left-0 right-0 z-10 bg-opacity-50 p-8">
+<% is_blog_index = current_page?(blog_posts_all_path) %>
+<nav class="<%= is_home ? 'absolute' : 'relative' %> top-0 left-0 right-0 z-10 bg-opacity-50 p-8">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
       
@@ -7,9 +8,8 @@
       <div class="sm:hidden">
         <button type="button"
           class="inline-flex items-center justify-center rounded-md p-2
-            <%= is_home ? 'text-white' : 'text-textRed' %>
+            <%= is_home ? 'text-white' : is_blog_index ? 'text-veryDarkBlue' : 'text-textRed' %>
             focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-          aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button"
           aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
           <span class="sr-only">Open main menu</span>
           <!-- Hamburger icon -->
@@ -23,56 +23,53 @@
       <!-- CENTER / RIGHT: Logo (right on mobile, center on desktop) -->
       <div class="order-2 sm:order-1 flex flex-1 justify-end sm:justify-start">
          <%= link_to root_path do %>
-            <%= image_tag(is_home ? "logo.svg": "logo-pink.png",  class: is_home ? "h-10" : "h-16") %>
+            <% logo = is_home ? "logo.svg" : is_blog_index ? "logo-dark.svg" : "logo-pink.png" %>
+            <%= image_tag(logo, class: is_home ? "h-10" : "h-16") %>
           <% end %>
       </div>
 
-      <!-- DESKTOP NAV LINKS -->
+      <!-- DESKTOP NAV LINKS + AUTH -->
       <div class="hidden sm:flex sm:items-center sm:space-x-6 order-2">
-  <%= link_to "Be Inspired", blog_posts_all_path,
-      class: "#{is_home ? 'text-grayishBlue50 hover:text-white' : 'text-textRed hover:text-veryLightRed'} px-3 py-2" %>
+        <% nav_link_class = is_home ? 'text-white hover:text-grayishBlue50' : is_blog_index ? 'text-veryDarkBlue hover:text-veryDarkGrayishBlue' : 'text-textRed hover:text-veryLightRed' %>
+        <%= link_to "Be Inspired", blog_posts_all_path, class: "#{nav_link_class} px-3 py-2" %>
+        <%= link_to "Share", new_blog_post_path, class: "#{nav_link_class} px-3 py-2" %>
 
-  <%= link_to "Share", new_blog_post_path,
-      class: "#{is_home ? 'text-grayishBlue50 hover:text-white' : 'text-textRed hover:text-veryLightRed'} px-3 py-2" %>
-</div>
+        <% if user_signed_in? %>
+          <!-- Avatar dropdown -->
+          <div class="relative flex items-center px-3 py-2">
+            <button
+              id="user-menu-button"
+              type="button"
+              class="flex items-center focus:outline-none"
+              aria-expanded="false"
+            >
+              <% if current_user.avatar.attached? %>
+                <%= image_tag current_user.avatar.variant(resize_to_fill: [32,32]),
+                      class: "h-8 w-8 rounded-full cursor-pointer" %>
+              <% else %>
+                <%= image_tag "avatar-placeholder1.jpg", class: "h-8 w-8 rounded-full cursor-pointer" %>
+              <% end %>
+            </button>
 
-<!-- RIGHT: Desktop Profile / Auth Buttons -->
-<div class="pl-4 order-3 flex items-center space-x-4 relative">
-  <% if user_signed_in? %>
-    <!-- Dropdown container -->
-    <div class="relative hidden sm:flex items-center px-3 pb-2">
-      <button
-        id="user-menu-button"
-        type="button"
-        class="flex items-center focus:outline-none"
-        aria-expanded="false"
-      >
-        <% if current_user.avatar.attached? %>
-          <%= image_tag current_user.avatar.variant(resize_to_fill: [32,32]),
-                class: "h-8 w-8 rounded-full cursor-pointer" %>
+            <!-- Dropdown -->
+            <div
+              id="user-dropdown"
+              class="hidden absolute right-0 top-12 w-48 bg-white rounded-md font-ubuntu text-light z-20"
+            >
+              <%= link_to "Profile", edit_user_registration_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
+              <%= link_to "New Post", new_blog_post_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
+              <%= link_to "Logout", destroy_user_session_path,
+                  method: :delete,
+                  class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
+            </div>
+          </div>
         <% else %>
-          <%= image_tag "avatar-placeholder.jpg", class: "h-8 w-8 rounded-full cursor-pointer" %>
+          <%= link_to "Login", new_user_session_path,
+              class: "#{nav_link_class} px-3 py-2" %>
+          <%= link_to "Sign Up", new_user_registration_path,
+              class: "#{is_home ? 'border border-white text-white hover:bg-white hover:text-textRed' : is_blog_index ? 'border border-veryDarkBlue text-veryDarkBlue hover:bg-veryDarkBlue hover:text-white' : 'bg-white hover:bg-veryLightRed text-textRed hover:text-white'} font-medium py-1 px-6 rounded-full" %>
         <% end %>
-      </button>
-
-      <!-- Dropdown -->
-      <div
-        id="user-dropdown"
-        class="hidden absolute right-0 top-12 w-48 bg-white rounded-md font-ubuntu text-light z-20"
-      >
-        <%= link_to "Profile", edit_user_registration_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
-        <%= link_to "New Post", new_blog_post_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
-        <%= link_to "Logout", destroy_user_session_path,
-            method: :delete,
-            class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
       </div>
-    </div>
-  <% else %>
-    <%= link_to "Login", new_user_session_path, class: "hidden md:block text-grayishBlue50 hover:text-white" %>
-    <%= link_to "Sign Up", new_user_registration_path,
-        class: "hidden md:block bg-white hover:bg-veryLightRed text-textRed hover:text-white font-medium py-1 px-6 rounded-full" %>
-  <% end %>
-</div>
   </div>
 
   <!-- MOBILE MENU -->
@@ -83,14 +80,17 @@
           <% if current_user.avatar.attached? %>
             <%= image_tag current_user.avatar.variant(resize_to_fill: [32,32]), class: "h-8 w-8 rounded-full" %>
           <% else %>
-            <%= image_tag "avatar-placeholder.jpg", class: "h-8 w-8 rounded-full" %>
+            <%= image_tag "avatar-placeholder1.jpg", class: "h-8 w-8 rounded-full" %>
           <% end %>
           <span class="text-gray-50"><%= current_user.email %></span>
         </div>
       <% end %>
       <%= link_to "Get Inspired", blog_posts_all_path, class: "block px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md" %>
       <%= link_to "Start sharing", new_blog_post_path, class: "block px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md" %>
-       <% unless user_signed_in? %>
+      <% if user_signed_in? %>
+        <%= link_to "Profile", edit_user_registration_path, class: "block px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md" %>
+        <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "block w-full text-left px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md bg-transparent border-0" %>
+      <% else %>
         <%= link_to "Login", new_user_session_path, class: "block px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md" %>
         <%= link_to "Sign Up", new_user_registration_path, class: "block px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white rounded-md" %>
       <% end %>
