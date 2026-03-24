@@ -4,28 +4,27 @@
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
       
-      <!-- LEFT: Mobile menu button (visible on mobile only) -->
-      <div class="sm:hidden">
+      <!-- Logo (left on mobile, left on desktop) -->
+      <div class="order-1 flex flex-1 justify-start">
+         <%= link_to root_path do %>
+            <% logo = is_home ? "logo.svg" : is_blog_index ? "logo-dark.svg" : "logo-pink.png" %>
+            <%= image_tag(logo, class: is_home ? "h-10" : "h-16") %>
+          <% end %>
+      </div>
+
+      <!-- Mobile menu button (right side, visible on mobile only) -->
+      <div class="sm:hidden order-3">
         <button type="button"
           class="inline-flex items-center justify-center rounded-md p-2
             <%= is_home ? 'text-white' : is_blog_index ? 'text-veryDarkBlue' : 'text-textRed' %>
             focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
           aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
           <span class="sr-only">Open main menu</span>
-          <!-- Hamburger icon -->
           <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
               d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
         </button>
-      </div>
-
-      <!-- CENTER / RIGHT: Logo (right on mobile, center on desktop) -->
-      <div class="order-2 sm:order-1 flex flex-1 justify-end sm:justify-start">
-         <%= link_to root_path do %>
-            <% logo = is_home ? "logo.svg" : is_blog_index ? "logo-dark.svg" : "logo-pink.png" %>
-            <%= image_tag(logo, class: is_home ? "h-10" : "h-16") %>
-          <% end %>
       </div>
 
       <!-- DESKTOP NAV LINKS + AUTH -->
@@ -54,13 +53,14 @@
             <!-- Dropdown -->
             <div
               id="user-dropdown"
-              class="hidden absolute right-0 top-12 w-48 bg-white rounded-md font-ubuntu text-light z-20"
+              class="hidden absolute right-0 top-12 w-44 bg-white rounded-xl shadow-lg ring-1 ring-black/5 font-ubuntu z-20 overflow-hidden"
             >
-              <%= link_to "Profile", edit_user_registration_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
-              <%= link_to "New Post", new_blog_post_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
+              <%= link_to "Profile", edit_user_registration_path, class: "flex items-center gap-2 px-4 py-3 text-sm text-veryDarkGrayishBlue hover:bg-veryLightRed hover:text-textRed transition-colors" %>
+              <%= link_to "New Post", new_blog_post_path, class: "flex items-center gap-2 px-4 py-3 text-sm text-veryDarkGrayishBlue hover:bg-veryLightRed hover:text-textRed transition-colors" %>
+              <div class="border-t border-gray-100"></div>
               <%= link_to "Logout", destroy_user_session_path,
                   method: :delete,
-                  class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
+                  class: "flex items-center gap-2 px-4 py-3 text-sm text-textRed hover:bg-veryLightRed transition-colors" %>
             </div>
           </div>
         <% else %>
