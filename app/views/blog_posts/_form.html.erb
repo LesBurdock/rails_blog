@@ -1,5 +1,3 @@
-<% content_for :form_title, "New Blog Post" %>
-
 <%= form_with(model: @blog_post, local: true, class: "space-y-6") do |form| %>
 
   <% if form.object.errors.any? %>
@@ -42,7 +40,7 @@
 
   <!-- Submit Button -->
   <div>
-    <%= form.submit "Create Post", class: "w-full mt-6 bg-veryLightRed hover:bg-red-600 text-white font-semibold py-3 rounded-full transition" %>
+    <%= form.submit(@blog_post.persisted? ? "Update Post" : "Create Post", class: "w-full mt-6 bg-veryLightRed hover:bg-red-600 text-white font-semibold py-3 rounded-full transition") %>
   </div>
 
 <% end %>
