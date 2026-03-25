@@ -1,3 +1,5 @@
-<h1>edit a post</h1>
-<%= render partial: "form", locals: {blog_post: @blog_post} %>
-<%= button_to "delete", @blog_post, method: :delete, data: {turbo_confirm: "Are you Sure?"} %>
+<%= render "shared/navbar" %>
+<div class="m-24">
+  <h1 class="font-Ubuntu text-center text-veryDarkBlue text-2xl md:text-4xl z-10 mt-48 tracking-tight">Edit Post</h1>
+  <%= render partial: "form", locals: { blog_post: @blog_post } %>
+</div>

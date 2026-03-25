@@ -1,35 +1,70 @@
-<div class="">
-<div class="grid grid-cols-1 grid-rows-2 md:grid-rows-1  md:grid-cols-2 md:h-screen place-content-center text-veryDarkBlue">
-  <div class="m-12 md:m-24 py-12 md:col-start-1 md:row-start-1 row-start-2">
-    <h2 class="font-Ubuntu text-veryDarkBlue text-2xl">Welcome Back</h2>
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
-      <div class="py-8">
-      <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-      </div>
-      </div>
-      <div>
-      <div class="field">
-        <%= f.label :password %><br />
-        <%= f.password_field :password, autocomplete: "current-password" %>
-      </div>
-      </div>
-      <% if devise_mapping.rememberable? %>
-        <div class="field">
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
+<div class="min-h-screen flex flex-col text-veryDarkBlue">
+
+  <!-- Top banner -->
+  <div
+    class="h-48 md:h-64 bg-cover bg-center rounded-b-3xl shadow-md"
+    style="background-image:
+      linear-gradient(to right, rgba(248, 80, 3, 0.79), rgba(248, 3, 54, 0.76)),
+      url(<%= asset_path 'bg-pattern-intro-mobile.svg' %>);">
+  </div>
+
+  <!-- Form section -->
+  <div class="flex-1 flex items-center justify-center px-6">
+    <div class="w-full max-w-md py-12">
+
+      <h2 class="font-Ubuntu text-3xl font-bold mb-8 text-center">
+        Welcome Back
+      </h2>
+
+      <!-- Form -->
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
+
+        <!-- Email field -->
+        <div class="mt-10">
+          <%= f.label :email, class: "block text-sm font-medium text-gray-600" %>
+          <%= f.email_field :email,
+            autofocus: true,
+            autocomplete: "email",
+            class: "w-full px-4 py-3 rounded-lg border border-gray-300
+                   focus:outline-none focus:ring-2 focus:ring-veryLightRed
+                   focus:border-veryLightRed transition"
+          %>
         </div>
+
+        <!-- Password field -->
+        <div class="mt-10">
+          <%= f.label :password, class: "block text-sm font-medium text-gray-600" %>
+          <%= f.password_field :password,
+            autocomplete: "current-password",
+            class: "w-full px-4 py-3 rounded-lg border border-gray-300
+                   focus:outline-none focus:ring-2 focus:ring-veryLightRed
+                   focus:border-veryLightRed transition"
+          %>
+        </div>
+
+        <!-- Remember me -->
+        <% if devise_mapping.rememberable? %>
+          <div class="flex items-center gap-2 mt-10">
+            <%= f.check_box :remember_me,
+              class: "rounded border-gray-300 text-veryLightRed focus:ring-veryLightRed" %>
+            <%= f.label :remember_me, class: "text-sm text-gray-600" %>
+          </div>
+        <% end %>
+
+        <!-- Submit button -->
+        <div class="mt-10">
+          <%= f.submit "Log in",
+            class: "w-full mt-4 bg-veryLightRed hover:bg-red-600
+                   text-white font-semibold py-3 rounded-full transition" %>
+        </div>
+
       <% end %>
-      <div class="actions">
-       <button class="mt-6 px-6 bg-veryLightRed hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"><%= f.submit "Log in" %></button>
+
+      <!-- Devise links -->
+      <div class="mt-6 text-sm text-gray-500 text-center">
+        <%= render "devise/shared/links" %>
       </div>
-    <% end %>
-    <%= render "devise/shared/links" %>
+
+    </div>
   </div>
-  <div>
-      <div class=" bg-cover bg-center h-full col-start-1 row-start-1 md:col-start-2"
-      style="background-image:linear-gradient(to right, rgba(248, 80, 3, 0.79), rgba(248, 3, 54, 0.76)),url(<%= asset_path 'bg-pattern-intro-mobile.svg' %>);">
-  </div>
-</div>
 </div>

@@ -8,7 +8,7 @@ module.exports = {
     './app/views/**/*.{erb,haml,html,slim}'
   ],
   safelist: [
-    'md:col-span-2', // <-- add this
+    'md:col-span-2', 'space-y-6', 'space-y-2', 'space-x-4' // <-- add this
   ],
   theme: {
     extend:{

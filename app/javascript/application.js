@@ -40,11 +40,21 @@ function initializeNavbar() {
     });
   }
 }
-
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("turbo:load", () => {
   const tabButtons = document.querySelectorAll(".tab-button");
   const tabContents = document.querySelectorAll(".tab-content");
 
+  // ---- DEFAULT TAB ON LOAD ----
+  const firstButton = tabButtons[0];
+  if (firstButton) {
+    const firstTabId = firstButton.dataset.tab;
+    tabContents.forEach(c => c.classList.add("hidden")); // hide all first
+    document.getElementById(firstTabId).classList.remove("hidden");
+    firstButton.classList.add("tab-active");
+    firstButton.classList.remove("text-grayishBlue50");
+  }
+
+  // ---- TAB CLICK HANDLERS ----
   tabButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const target = button.dataset.tab;
@@ -64,15 +74,35 @@ document.addEventListener("DOMContentLoaded", () => {
       button.classList.remove("text-grayishBlue50");
     });
   });
-
-  // ---- DEFAULT TAB ON LOAD ----
-  const firstButton = tabButtons[0];
-  const firstTabId = firstButton.dataset.tab;
-
-  document.getElementById(firstTabId).classList.remove("hidden");
-  firstButton.classList.add("tab-active");
-  firstButton.classList.remove("text-grayishBlue50");
 });
+
+document.addEventListener("turbo:load", () => {
+  const fileInput = document.querySelector('input[type="file"][name="user[avatar]"]');
+  const fileNameDisplay = document.getElementById("avatar-file-name");
+
+  if (fileInput && fileNameDisplay) {
+    fileInput.addEventListener("change", () => {
+      if (fileInput.files.length > 0) {
+        fileNameDisplay.textContent = fileInput.files[0].name;
+      } else {
+        fileNameDisplay.textContent = "No file chosen";
+      }
+    });
+  }
+});
+
+
+document.addEventListener("turbo:load", () => {
+  const fileInput = document.querySelector('input[type="file"][name="blog_post[photo]"]');
+  const fileNameDisplay = document.getElementById("photo-file-name");
+
+  if (fileInput && fileNameDisplay) {
+    fileInput.addEventListener("change", () => {
+      fileNameDisplay.textContent = fileInput.files.length > 0 ? fileInput.files[0].name : "No file chosen";
+    });
+  }
+});
+
 
 // Initialize on turbo:load (full page load or Turbo Frame replace)
 document.addEventListener('turbo:load', initializeNavbar);
